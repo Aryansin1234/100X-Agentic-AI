@@ -317,7 +317,7 @@ function FolderCard({ folder }) {
       </div>
 
       {open && (
-        <div style={{ padding: '1.25rem 1.4rem', borderTop: `1px solid ${col.border}`, background: 'var(--surface2)' }}>
+        <div style={{ padding: '1.1rem 1.1rem', borderTop: `1px solid ${col.border}`, background: 'var(--surface2)', minWidth: 0, overflow: 'hidden' }}>
           <div style={{ fontFamily: 'var(--body)', fontSize: 14, color: 'var(--ink2)', lineHeight: 1.7, marginBottom: 12 }}>
             {folder.what}
           </div>
