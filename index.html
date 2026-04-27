@@ -1,0 +1,2349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100X Agentic Engineering — Aryan's Unlock Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Surfaces */
+  --bg: #f4f6fb;
+  --bg2: #eceff7;
+  --bg3: #e1e5f2;
+  --surface: #ffffff;
+  --surface2: #f9fafd;
+
+  /* Ink */
+  --ink: #0d1117;
+  --ink2: #374151;
+  --ink3: #6b7280;
+  --ink4: #9ca3af;
+
+  /* Compatibility aliases */
+  --paper: #ffffff;
+  --paper2: #f4f6fb;
+  --paper3: #e1e5f2;
+
+  /* Hero */
+  --hero-bg: #08090f;
+
+  /* Accents */
+  --gold: #d97706;
+  --gold-mid: #f59e0b;
+  --gold-light: #fffbeb;
+  --gold-border: #fcd34d;
+
+  --blue: #2563eb;
+  --blue-light: #eff6ff;
+  --blue-border: #93c5fd;
+
+  --teal: #0d9488;
+  --teal-light: #f0fdfa;
+  --teal-border: #5eead4;
+
+  --purple: #7c3aed;
+  --purple-light: #faf5ff;
+  --purple-border: #c4b5fd;
+
+  --coral: #e11d48;
+  --coral-light: #fff1f2;
+  --coral-border: #fda4af;
+
+  --amber: #d97706;
+  --amber-light: #fffbeb;
+
+  /* Gradients */
+  --grad-gold: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  --grad-blue: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --grad-hero: linear-gradient(160deg, #08090f 0%, #0f1529 55%, #0a1020 100%);
+
+  /* Typography */
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --head: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --body: 'Inter', system-ui, sans-serif;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-lg: 16px;
+  --transition: 0.18s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.logo {
+  font-family: var(--head);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 12px;
+  background: var(--bg2);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 100px;
+  color: var(--ink3);
+  letter-spacing: 0.01em;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--grad-hero);
+  padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 5vw, 4rem) clamp(3.5rem, 8vw, 6rem);
+  border-bottom: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* hero ambient glows */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 50%, rgba(245,158,11,0.10) 0%, transparent 50%),
+    radial-gradient(circle at 85% 15%, rgba(59,130,246,0.08) 0%, transparent 40%),
+    radial-gradient(circle at 55% 85%, rgba(139,92,246,0.07) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero > * { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-mid);
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-mid));
+}
+
+.hero h1 {
+  font-family: var(--head);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  max-width: 920px;
+  margin-bottom: 2rem;
+}
+
+.hero h1 em {
+  font-style: normal;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-family: var(--body);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: rgba(255,255,255,0.6);
+  max-width: 600px;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  font-weight: 400;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  max-width: 840px;
+  overflow: hidden;
+  box-shadow: 0 0 48px rgba(245,158,11,0.12);
+}
+
+.stat-item {
+  padding: 1.5rem 1.75rem;
+  background: rgba(255,255,255,0.03);
+  border-right: 1px solid rgba(255,255,255,0.07);
+  transition: background var(--transition);
+}
+
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: rgba(255,255,255,0.07); }
+
+.stat-n {
+  font-family: var(--head);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  display: block;
+  letter-spacing: -0.03em;
+}
+
+.stat-l {
+  font-family: var(--body);
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 8px;
+  display: block;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.hero-watermark { display: none; }
+
+/* ── LAYOUT ── */
+.page-grid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid rgba(0,0,0,0.07);
+  box-shadow: 2px 0 16px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  padding: 1.75rem 1.1rem;
+}
+
+.sidebar-label {
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink4);
+  margin-bottom: 0.75rem;
+  padding-left: 10px;
+}
+
+.sidebar-nav {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  font-family: var(--body);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink3);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.sidebar-nav a:hover {
+  background: var(--bg2);
+  color: var(--ink);
+}
+
+.sidebar-nav a.active {
+  background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(249,115,22,0.1));
+  color: var(--gold);
+  border: 1px solid rgba(245,158,11,0.2);
+  font-weight: 600;
+}
+
+.sidebar-num {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: inherit;
+  opacity: 0.5;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background: rgba(0,0,0,0.06);
+  margin: 1.25rem 0;
+}
+
+.sidebar-meta {
+  font-family: var(--body);
+  font-size: 11px;
+  color: var(--ink3);
+  line-height: 1.65;
+  padding: 12px;
+  background: var(--bg2);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0,0,0,0.06);
+  font-style: italic;
+}
+
+/* ── MAIN CONTENT ── */
+.main-content {
+  padding: 0;
+  background: var(--bg);
+}
+
+/* ── SECTIONS ── */
+.content-section {
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  background: var(--bg);
+}
+
+.content-section:nth-child(even) {
+  background: var(--surface);
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink4);
+  letter-spacing: 0.08em;
+  padding-top: 7px;
+  flex-shrink: 0;
+}
+
+.section-title-group h2 {
+  font-family: var(--head);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.section-title-group p {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--ink3);
+  font-weight: 400;
+}
+
+/* ── PILLARS (accordion) ── */
+.pillar {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--transition);
+}
+
+.pillar:hover { box-shadow: var(--shadow); }
+
+.pillar-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 1.1rem 1.4rem;
+  cursor: pointer;
+  user-select: none;
+  background: var(--surface);
+  transition: background var(--transition);
+}
+
+.pillar-head:hover { background: var(--bg2); }
+
+.pillar.open .pillar-head { background: linear-gradient(135deg, #0d1117 0%, #1a2235 100%); }
+.pillar.open .pillar-head .phead-title,
+.pillar.open .pillar-head .phead-num { color: rgba(255,255,255,0.88); }
+.pillar.open .pillar-head .phead-tag {
+  color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.12);
+}
+.pillar.open .pillar-head .phead-chevron { color: var(--gold-mid); transform: rotate(180deg); }
+
+.phead-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink4);
+  flex-shrink: 0;
+  letter-spacing: 0.06em;
+}
+
+.phead-title {
+  font-family: var(--head);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  flex: 1;
+}
+
+.phead-tag {
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink3);
+  background: var(--bg2);
+  border: 1px solid rgba(0,0,0,0.07);
+  padding: 2px 10px;
+  border-radius: 100px;
+  flex-shrink: 0;
+  letter-spacing: 0.01em;
+}
+
+.phead-chevron {
+  font-size: 12px;
+  color: var(--ink4);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.pillar-body {
+  display: none;
+  padding: 1.5rem;
+  background: var(--surface2);
+  border-top: 1px solid rgba(0,0,0,0.07);
+}
+
+.pillar.open .pillar-body { display: block; }
+
+/* ── RULES ── */
+.rule {
+  padding: 1.1rem 1.2rem 1.1rem 1.4rem;
+  border-left: 3px solid rgba(0,0,0,0.15);
+  background: var(--surface);
+  margin-bottom: 12px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  box-shadow: var(--shadow-xs);
+}
+
+.rule-title {
+  font-family: var(--head);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.rule-desc {
+  font-family: var(--body);
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.7;
+}
+
+.rule.gold { border-color: var(--gold-mid); background: var(--gold-light); }
+.rule.teal { border-color: var(--teal); background: var(--teal-light); }
+.rule.purple { border-color: var(--purple); background: var(--purple-light); }
+.rule.coral { border-color: var(--coral); background: var(--coral-light); }
+
+.tip {
+  font-family: var(--mono);
+  font-size: 12px;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  margin-top: 10px;
+  color: var(--ink2);
+  line-height: 1.5;
+}
+
+.tip::before {
+  content: '→ ';
+  color: var(--gold-mid);
+  font-weight: 600;
+}
+
+/* ── CODE BLOCK ── */
+.code {
+  font-family: var(--mono);
+  font-size: 12px;
+  background: #0d1117;
+  color: #c9d1d9;
+  padding: 1.25rem 1.4rem;
+  margin: 12px 0;
+  line-height: 1.7;
+  overflow-x: auto;
+  white-space: pre;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), var(--shadow-sm);
+}
+
+/* ── TOOL GRID ── */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 1rem 0;
+}
+
+.tool-card {
+  background: var(--surface);
+  padding: 1.25rem;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+
+.tool-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--blue-border);
+  transform: translateY(-2px);
+}
+
+.tool-name {
+  font-family: var(--head);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.tool-use {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--ink3);
+  line-height: 1.6;
+}
+
+/* ── TIER ROWS ── */
+.tier-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.tier-row:last-child { border-bottom: none; }
+
+.tier-badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border: 1.5px solid;
+  flex-shrink: 0;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.tier-badge.t-gold { border-color: var(--gold-mid); color: var(--gold); background: var(--gold-light); }
+.tier-badge.t-teal { border-color: var(--teal); color: var(--teal); background: var(--teal-light); }
+.tier-badge.t-purple { border-color: var(--purple); color: var(--purple); background: var(--purple-light); }
+.tier-badge.t-coral { border-color: var(--coral); color: var(--coral); background: var(--coral-light); }
+
+.tier-text {
+  font-family: var(--body);
+  font-size: 14.5px;
+  color: var(--ink2);
+  line-height: 1.65;
+}
+
+.tier-text strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ── CALLOUT ── */
+.callout {
+  border: 1px solid var(--gold-border);
+  border-left: 4px solid var(--gold-mid);
+  padding: 1.5rem 1.75rem;
+  margin: 1.5rem 0;
+  background: linear-gradient(135deg, var(--gold-light), #fffdf8);
+  border-radius: var(--radius);
+  position: relative;
+  box-shadow: 0 2px 12px rgba(245,158,11,0.08);
+}
+
+.callout::before {
+  content: '\201C';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  font-family: var(--head);
+  font-size: 64px;
+  color: var(--gold-mid);
+  opacity: 0.18;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.callout-label {
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.callout p {
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink);
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* ── MINDSET CARDS ── */
+.mindset-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 1rem 0;
+}
+
+.mindset-card {
+  background: var(--surface);
+  padding: 1.4rem;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+
+.mindset-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--blue-border);
+  transform: translateY(-2px);
+}
+
+.mindset-q {
+  font-family: var(--head);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.mindset-a {
+  font-family: var(--body);
+  font-size: 13.5px;
+  color: var(--ink2);
+  line-height: 1.65;
+}
+
+/* ── HIERARCHY ── */
+.hierarchy {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius-lg);
+  margin: 1rem 0;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.hier-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: var(--surface);
+  transition: background var(--transition);
+}
+
+.hier-row:last-child { border-bottom: none; }
+.hier-row:hover { background: var(--bg2); }
+
+.hier-level {
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(0,0,0,0.06);
+}
+
+.hier-level.l1 { background: var(--coral-light); color: var(--coral); }
+.hier-level.l2 { background: var(--gold-light); color: var(--gold); }
+.hier-level.l3 { background: var(--teal-light); color: var(--teal); }
+.hier-level.l4 { background: var(--purple-light); color: var(--purple); }
+
+.hier-content {
+  padding: 16px 20px;
+  flex: 1;
+}
+
+.hier-title {
+  font-family: var(--head);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.hier-desc {
+  font-family: var(--body);
+  font-size: 13.5px;
+  color: var(--ink2);
+  line-height: 1.55;
+}
+
+.hier-bar {
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  border-left: 1px solid rgba(0,0,0,0.06);
+}
+
+.hier-prog {
+  height: 5px;
+  width: 100%;
+  background: var(--bg3);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.hier-fill {
+  height: 100%;
+  border-radius: 100px;
+}
+
+/* ── ACTION PLAN ── */
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin: 1rem 0;
+}
+
+.action-card {
+  background: var(--surface);
+  padding: 1.4rem;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.action-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--grad-blue);
+}
+
+.action-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.action-day {
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink4);
+  margin-bottom: 6px;
+}
+
+.action-title {
+  font-family: var(--head);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+
+.action-items {
+  list-style: none;
+  padding: 0;
+}
+
+.action-items li {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.6;
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.action-items li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--gold-mid);
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  background: var(--hero-bg);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  font-family: var(--head);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-right {
+  font-family: var(--body);
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  text-align: right;
+  line-height: 1.6;
+}
+
+/* ── INTRO GRID (Fundamentals) ── */
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 1.5rem 0;
+}
+
+.intro-card {
+  background: var(--surface);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  box-shadow: var(--shadow-sm);
+  border-top: 3px solid transparent;
+  transition: all var(--transition);
+}
+
+.intro-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.intro-card.gold-top  { border-top-color: var(--gold-mid); }
+.intro-card.teal-top  { border-top-color: var(--teal); }
+.intro-card.purple-top{ border-top-color: var(--purple); }
+.intro-card.blue-top  { border-top-color: var(--blue); }
+.intro-card.coral-top { border-top-color: var(--coral); }
+.intro-card.green-top { border-top-color: #16a34a; }
+
+.intro-icon  { font-size: 24px; margin-bottom: 10px; display: block; }
+
+.intro-title {
+  font-family: var(--head);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.intro-desc {
+  font-family: var(--body);
+  font-size: 12.5px;
+  color: var(--ink3);
+  line-height: 1.65;
+}
+
+/* ── ANTI-PATTERNS GRID ── */
+.antipattern-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 1rem 0;
+}
+
+.ap-card {
+  background: var(--surface);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+  box-shadow: var(--shadow-sm);
+  border-top: 3px solid transparent;
+  transition: all var(--transition);
+}
+
+.ap-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); border-top-color: var(--coral); }
+
+.ap-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--coral);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  display: inline-block;
+  background: var(--coral-light);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.ap-title {
+  font-family: var(--head);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 7px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.ap-desc {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--ink3);
+  line-height: 1.65;
+}
+
+/* ── CALLOUT VARIANTS ── */
+.callout.callout-warning {
+  border-color: var(--coral-border);
+  border-left-color: var(--coral);
+  background: linear-gradient(135deg, var(--coral-light), #fff8f9);
+  box-shadow: 0 2px 12px rgba(225,29,72,0.08);
+}
+.callout.callout-warning .callout-label { color: var(--coral); }
+.callout.callout-warning::before { color: var(--coral); }
+
+.callout.callout-info {
+  border-color: var(--blue-border);
+  border-left-color: var(--blue);
+  background: linear-gradient(135deg, var(--blue-light), #f8fbff);
+  box-shadow: 0 2px 12px rgba(37,99,235,0.07);
+}
+.callout.callout-info .callout-label { color: var(--blue); }
+.callout.callout-info::before { color: var(--blue); }
+
+/* ── HAMBURGER BUTTON ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+.hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+/* ── SIDEBAR OVERLAY ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 140;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.sidebar-overlay.active { opacity: 1; pointer-events: all; }
+
+/* ── SIDEBAR CLOSE BUTTON ── */
+.sidebar-close {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg2);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--ink3);
+  transition: all var(--transition);
+  line-height: 1;
+}
+.sidebar-close:hover { background: var(--bg3); color: var(--ink); }
+
+/* ── BACK TO TOP ── */
+.back-to-top {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  width: 46px;
+  height: 46px;
+  background: var(--grad-gold);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(245,158,11,0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 120;
+  pointer-events: none;
+}
+.back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+.back-to-top:hover   { box-shadow: 0 6px 28px rgba(245,158,11,0.55); transform: translateY(-3px); }
+
+/* ── SCROLL FADE IN ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ── READING PROGRESS BAR ── */
+.reading-bar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  height: 3px;
+  background: var(--grad-gold);
+  z-index: 200;
+  transition: width 0.1s linear;
+  width: 0%;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px rgba(245,158,11,0.5);
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE — FULL MOBILE SYSTEM
+══════════════════════════════════ */
+
+/* ── Tablet (≤ 800px): drawer sidebar ── */
+@media (max-width: 800px) {
+  .page-grid { grid-template-columns: 1fr; }
+
+  .sidebar {
+    position: fixed;
+    top: 60px;
+    left: -100%;
+    height: calc(100vh - 60px);
+    width: 280px;
+    border-right: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 6px 0 40px rgba(0,0,0,0.16);
+    transition: left 0.3s cubic-bezier(0.4,0,0.2,1);
+    z-index: 150;
+    background: var(--surface);
+    overflow-y: auto;
+    padding-top: 2.5rem;
+  }
+  .sidebar.open { left: 0; }
+
+  .sidebar-overlay { display: block; }
+  .sidebar-close   { display: flex; }
+  .hamburger       { display: flex; }
+  .nav-tags        { display: none; }
+
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .stat-item:nth-child(2n) { border-right: none; }
+  .stat-item:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.08); }
+
+  .intro-grid       { grid-template-columns: 1fr 1fr; }
+  .antipattern-grid { grid-template-columns: 1fr 1fr; }
+  .mindset-grid     { grid-template-columns: 1fr; }
+  .action-grid      { grid-template-columns: 1fr 1fr; }
+
+  .phead-tag { display: none; }
+  .content-section { padding: 2rem 1.25rem; }
+}
+
+/* ── Mobile (≤ 600px) ── */
+@media (max-width: 600px) {
+  .hero { padding: 2.75rem 1.1rem 2.75rem; }
+  .site-header { padding: 0 1.1rem; height: 56px; }
+  .reading-bar { top: 56px; }
+
+  .hero h1 { letter-spacing: -0.03em; }
+
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .stat-item { padding: 1rem 1.1rem; }
+  .stat-n   { font-size: 1.8rem; }
+  .stat-l   { font-size: 10px; }
+
+  .section-header { flex-direction: column; gap: 0.2rem; }
+  .section-num    { padding-top: 0; font-size: 10px; }
+
+  .intro-grid       { grid-template-columns: 1fr; }
+  .antipattern-grid { grid-template-columns: 1fr; }
+  .action-grid      { grid-template-columns: 1fr; }
+  .tool-grid        { grid-template-columns: 1fr; }
+
+  .pillar-body { padding: 1rem; }
+  .pillar-head { padding: 0.9rem 1rem; gap: 8px; }
+  .phead-title { font-size: 13px; }
+  .phead-num   { display: none; }
+
+  .hier-bar    { display: none; }
+  .hier-content{ padding: 12px 14px; }
+  .hier-title  { font-size: 13px; }
+  .hier-desc   { font-size: 12.5px; }
+
+  .code { font-size: 11px; padding: 1rem; }
+
+  .mindset-grid { gap: 10px; }
+  .mindset-card { padding: 1.1rem; }
+  .mindset-q    { font-size: 13px; }
+  .mindset-a    { font-size: 13px; }
+
+  .rule      { padding: 0.9rem 1rem 0.9rem 1.15rem; }
+  .rule-desc { font-size: 13.5px; }
+
+  .callout   { padding: 1.25rem 1.25rem; }
+  .callout p { font-size: 1rem; }
+
+  .back-to-top { bottom: 1rem; right: 1rem; width: 40px; height: 40px; font-size: 17px; }
+
+  .site-footer { padding: 2rem 1.1rem; }
+}
+
+/* ── Small mobile (≤ 420px) ── */
+@media (max-width: 420px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .stat-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; }
+  .stat-item:last-child { border-bottom: none !important; }
+  .hero h1 { font-size: 2.5rem; }
+  .stats-row { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<div class="reading-bar" id="readingBar"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<header class="site-header">
+  <a href="#" class="logo">Agentic Engineering Bible</a>
+  <div class="nav-tags">
+    <span class="tag">April 2026</span>
+    <span class="tag">Research-Based</span>
+    <span class="tag">Battle-Tested</span>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-watermark">100X</div>
+  <div class="hero-eyebrow">Unlock Guide · Top 1% Practices</div>
+  <h1>100X Agentic<br><em>Engineering</em></h1>
+  <p class="hero-sub">Synthesized from Anthropic's 2026 Coding Trends Report, Boris Cherny's workflow, Addy Osmani's agent orchestra framework, and the sharpest community intelligence of the year.</p>
+  <div class="stats-row">
+    <div class="stat-item">
+      <span class="stat-n">252×</span>
+      <span class="stat-l">Faster than traditional workflows</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-n">90.2%</span>
+      <span class="stat-l">Higher success with multi-agent isolation</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-n">90%</span>
+      <span class="stat-l">Cost reduction via Plan-and-Execute</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-n">Top 2%</span>
+      <span class="stat-l">Engineers manage fleets, not prompts</span>
+    </div>
+  </div>
+</section>
+
+<!-- LAYOUT -->
+<div class="page-grid">
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation">✕</button>
+  <div class="sidebar-label">Contents</div>
+  <ul class="sidebar-nav">
+    <li><a href="#fundamentals" class="active"><span class="sidebar-num">01</span> Fundamentals</a></li>
+    <li><a href="#context"><span class="sidebar-num">02</span> Context Engineering</a></li>
+    <li><a href="#plan"><span class="sidebar-num">03</span> Plan Before You Build</a></li>
+    <li><a href="#delegate"><span class="sidebar-num">04</span> Delegate & Verify</a></li>
+    <li><a href="#git"><span class="sidebar-num">05</span> Git Discipline</a></li>
+    <li><a href="#claudemd"><span class="sidebar-num">06</span> CLAUDE.md Mastery</a></li>
+    <li><a href="#selfimprove"><span class="sidebar-num">07</span> Self-Improvement Loop</a></li>
+    <li><a href="#commands"><span class="sidebar-num">08</span> Slash Commands</a></li>
+    <li><a href="#multiagent"><span class="sidebar-num">09</span> Multi-Agent Systems</a></li>
+    <li><a href="#patterns"><span class="sidebar-num">10</span> Orchestration Patterns</a></li>
+    <li><a href="#tier3"><span class="sidebar-num">11</span> 3-Tier Stack</a></li>
+    <li><a href="#mcp"><span class="sidebar-num">12</span> MCP + A2A Protocols</a></li>
+    <li><a href="#tools"><span class="sidebar-num">13</span> Tools &amp; Stack</a></li>
+    <li><a href="#security"><span class="sidebar-num">14</span> Security &amp; Safety</a></li>
+    <li><a href="#mindset"><span class="sidebar-num">15</span> Mindset Shifts</a></li>
+    <li><a href="#antipatterns"><span class="sidebar-num">16</span> Anti-Patterns</a></li>
+    <li><a href="#hierarchy"><span class="sidebar-num">17</span> Engineering Hierarchy</a></li>
+    <li><a href="#action"><span class="sidebar-num">18</span> Action Plan</a></li>
+  </ul>
+  <div class="sidebar-divider"></div>
+  <div class="sidebar-meta">
+    The single most important insight: top 2% engineers aren't using more tools or writing better prompts. They're engineering better <em>systems</em>.
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main-content">
+
+<!-- ═══ SECTION 0: FUNDAMENTALS ═══ -->
+<section class="content-section fade-up" id="fundamentals">
+  <div class="section-header">
+    <div class="section-num">00</div>
+    <div class="section-title-group">
+      <h2>Fundamentals</h2>
+      <p>The 6 pillars that separate amateurs from architects</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Core Insight</div>
+    <p>"The top 2% aren't using more tools or writing better prompts. They're engineering better systems — coordination, context, and feedback loops at scale."</p>
+  </div>
+
+  <div class="intro-grid">
+    <div class="intro-card gold-top">
+      <span class="intro-icon">⚡</span>
+      <div class="intro-title">Context Engineering</div>
+      <div class="intro-desc">The #1 skill of 2026. Mastering SELECT, WRITE, COMPRESS, and ISOLATE on the context window is what separates great agentic engineers from average ones.</div>
+    </div>
+    <div class="intro-card teal-top">
+      <span class="intro-icon">🗺️</span>
+      <div class="intro-title">Plan Before Building</div>
+      <div class="intro-desc">Every task touching 3+ files starts in Plan Mode. A vague spec multiplies errors across your whole agent fleet. The spec isn't overhead — it is the product.</div>
+    </div>
+    <div class="intro-card purple-top">
+      <span class="intro-icon">🔀</span>
+      <div class="intro-title">Multi-Agent Systems</div>
+      <div class="intro-desc">You are no longer the lead engineer — you are the system designer. Orchestrate fleets of specialist agents instead of prompting a single agent repeatedly.</div>
+    </div>
+    <div class="intro-card blue-top">
+      <span class="intro-icon">🔁</span>
+      <div class="intro-title">Self-Improvement Loop</div>
+      <div class="intro-desc">Every correction encoded in CLAUDE.md compounds indefinitely. After 6 months of consistent looping, your config knows your codebase better than most new hires.</div>
+    </div>
+    <div class="intro-card coral-top">
+      <span class="intro-icon">🛡️</span>
+      <div class="intro-title">Safety & Verification</div>
+      <div class="intro-desc">You are the final approval gate — never skip it. Human-in-the-loop checkpoints and blast radius minimization aren't optional friction; they're what makes scale safe.</div>
+    </div>
+    <div class="intro-card green-top">
+      <span class="intro-icon">🌿</span>
+      <div class="intro-title">Git Discipline</div>
+      <div class="intro-desc">One worktree per session. One branch per task. Squash merge everything. 10–15 parallel sessions only work because the branches never collide.</div>
+    </div>
+  </div>
+
+  <div class="callout callout-info">
+    <div class="callout-label">How to use this guide</div>
+    <p>Each of the 18 sections below is a deep-dive into one core practice. Start with <strong>Context Engineering (#01)</strong> and <strong>CLAUDE.md Mastery (#05)</strong> — these two alone will transform your daily workflow immediately. Use the sidebar to navigate; all accordions expand for full detail. On mobile, tap the menu button at top-right.</p>
+  </div>
+</section>
+
+<!-- ═══ SECTION 2: CONTEXT ENGINEERING ═══ -->
+<section class="content-section fade-up" id="context">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-title-group">
+      <h2>Context Engineering Is the New #1 Skill</h2>
+      <p>Foundation · Replaces prompt engineering entirely</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Karpathy, June 2025</div>
+    <p>"Context engineering is the delicate art and science of filling the context window with just the right information for the next step."</p>
+  </div>
+
+  <div class="pillar open">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">CE-01</span>
+      <span class="phead-title">The 4 core operations to master</span>
+      <span class="phead-tag">Foundation</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="rule teal">
+        <div class="rule-title">SELECT — only pull what's needed</div>
+        <div class="rule-desc">Use RAG, AST parsing, grep, and semantic similarity to inject relevant code and docs. Providing all tools simultaneously hurts accuracy 3× vs semantic selection. The context window is scarce — treat it like memory in a performance-critical system.</div>
+        <div class="tip">Tool selection via semantic similarity = 3× better accuracy vs giving Claude all tools at once</div>
+      </div>
+      <div class="rule gold">
+        <div class="rule-title">WRITE — persist knowledge across sessions</div>
+        <div class="rule-desc">Use scratchpads, tasks/lessons.md, and long-term memory files. Boris Cherny's rule: "Anytime Claude does something incorrectly, add it to CLAUDE.md so it never repeats." Every correction encoded compounds indefinitely.</div>
+      </div>
+      <div class="rule purple">
+        <div class="rule-title">COMPRESS — compact at 70–95% context usage</div>
+        <div class="rule-desc">Don't wait for auto-compact. Proactively clear with /clear between unrelated tasks. Compact at 70% context usage as a habit. Fresh context produces measurably better output — session hygiene is part of the craft.</div>
+        <div class="tip">/clear between unrelated tasks — treat sessions like git branches</div>
+      </div>
+      <div class="rule coral">
+        <div class="rule-title">ISOLATE — give each agent its own context window</div>
+        <div class="rule-desc">Multi-agent isolation delivers 90.2% higher task success vs single-agent execution. The cost is 15× tokens but the accuracy gain justifies it for any non-trivial work. Each agent gets its own tools, instructions, and memory — no cross-contamination.</div>
+        <div class="tip">Isolation = 90.2% higher success rate (15× token cost — worth every token)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">CE-02</span>
+      <span class="phead-title">The context budget allocation strategy</span>
+      <span class="phead-tag">Advanced</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="rule-desc" style="margin-bottom:10px;font-family:var(--body);font-size:15px;color:var(--ink2);">Treat the context window like memory management in high-performance computing. Allocate by priority, not by convenience.</div>
+      <div class="code">// Context Budget for 200k token window
+// Based on Claude optimal performance research
+
+Priority 1 — Critical Constraints (5% = 10k tokens)
+├── Security policies (non-negotiable)
+├── Type definitions and schemas
+└── Business invariant rules
+
+Priority 2 — Task Context (35% = 70k tokens)
+├── Current file being edited
+├── Related files (imports, dependencies)
+├── Test files for reference
+└── Specific requirements for this task
+
+Priority 3 — Project Patterns (40% = 80k tokens)
+├── Architecture Decision Records (ADRs)
+├── Code style guidelines
+├── Common patterns and examples
+└── Recent similar implementations
+
+Priority 4 — Background Knowledge (20% = 40k tokens)
+├── Framework documentation snippets
+├── Language reference
+└── Third-party API docs
+
+// Dynamic compression triggers at 95% usage
+if (context_usage > 0.95) {
+    summarize_oldest_messages();
+    compress_successful_trajectories();
+}</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 3: PLAN ═══ -->
+<section class="content-section fade-up" id="plan">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-title-group">
+      <h2>Plan Before You Build</h2>
+      <p>Workflow · Non-negotiable for any task touching 3+ files</p>
+    </div>
+  </div>
+
+  <div class="pillar open">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">PL-01</span>
+      <span class="phead-title">Plan Mode is not optional for complex tasks</span>
+      <span class="phead-tag">Core Habit</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="rule teal">
+        <div class="rule-title">Start every 3+ file task in Plan Mode</div>
+        <div class="rule-desc">Boris Cherny starts most sessions in Plan Mode. The spec you write upfront is product thinking made explicit — a vague spec multiplies errors across your entire agent fleet. The more autonomous your agents, the more expensive a bad spec becomes.</div>
+      </div>
+      <div class="rule gold">
+        <div class="rule-title">Spawn a second Claude to review your plan</div>
+        <div class="rule-desc">Before executing, open a second session and ask it to review your plan as a staff engineer. Cross-model review catches architectural drift before any code is written. This costs minutes and saves hours.</div>
+        <div class="tip">"Review this plan as a staff engineer. What's wrong, risky, or missing?"</div>
+      </div>
+      <div class="rule purple">
+        <div class="rule-title">Phase-wise gated execution</div>
+        <div class="rule-desc">Break tasks into atomic phases of 5–10 minutes each. Each phase must pass unit, automation, and integration test gates before proceeding. No phase skipping, no exceptions. Build the gates into the plan itself, not as an afterthought.</div>
+      </div>
+      <div class="rule coral">
+        <div class="rule-title">If Claude goes sideways — stop, don't fix forward</div>
+        <div class="rule-desc">Use Esc+Esc (/rewind) when Claude drifts. If you've corrected the same mistake twice, clear and restart. Correcting in-context piles debt on top of wrong assumptions — you're not fixing the problem, you're burying it.</div>
+        <div class="tip">After any mediocre fix: "Scrap this. Implement the elegant solution from scratch."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 4: DELEGATE ═══ -->
+<section class="content-section fade-up" id="delegate">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-title-group">
+      <h2>Delegate Aggressively, Verify Relentlessly</h2>
+      <p>Execution · The quality gap is usually an accountability gap</p>
+    </div>
+  </div>
+
+  <div class="pillar open">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">DV-01</span>
+      <span class="phead-title">The delegation and verification system</span>
+      <span class="phead-tag">Execution</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="rule teal">
+        <div class="rule-title">Delegate what's verifiable — hold what's design-critical</div>
+        <div class="rule-desc">Engineers delegate tasks they can "sniff-check for correctness" quickly: boilerplate, tests, migrations, formatting, documentation. Keep conceptually difficult or architecture-defining work collaborative. Your judgment is the scarce resource — spend it wisely.</div>
+      </div>
+      <div class="rule gold">
+        <div class="rule-title">Build feedback loops into CLAUDE.md permanently</div>
+        <div class="rule-desc">Tell Claude to run tests, linters, and build commands after every change. Without a feedback loop, Claude assumes changes work and moves on. With one, it self-corrects. Boris says this alone can 2–3× output quality — it's the single highest-leverage CLAUDE.md addition.</div>
+        <div class="tip">Always run pytest after changing Python files → baked into CLAUDE.md, not a one-time prompt</div>
+      </div>
+      <div class="rule purple">
+        <div class="rule-title">You are the final approval gate — never skip it</div>
+        <div class="rule-desc">"It compiled, ship it" is the most expensive mistake in agentic engineering. Every PR gets human review. Develop pattern recognition for agent-generated code: common failure modes, architectural drift, security holes, over-engineering.</div>
+      </div>
+      <div class="rule coral">
+        <div class="rule-title">Challenge Claude — don't just accept it</div>
+        <div class="rule-desc">Use adversarial verification prompts that force Claude to defend its output. The quality gap is often just an accountability gap — Claude will produce better work when it knows it has to justify itself.</div>
+        <div class="tip">"Grill me on these changes" · "What would a staff engineer say is wrong here?" · "Prove to me this works."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 5: GIT ═══ -->
+<section class="content-section fade-up" id="git">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-title-group">
+      <h2>Git Discipline = Agentic Safety Net</h2>
+      <p>Safety · One worktree per session is the baseline</p>
+    </div>
+  </div>
+
+  <div class="pillar open">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">GD-01</span>
+      <span class="phead-title">Worktrees, branches, and squash merges</span>
+      <span class="phead-tag">Safety</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="rule teal">
+        <div class="rule-title">One git worktree per Claude session</div>
+        <div class="rule-desc">Boris runs 10–15 Claude sessions simultaneously, each in its own git worktree. Changes don't collide. You can review, merge, or discard independently. This is not an advanced technique — it's the team's baseline for productive multi-session work.</div>
+        <div class="tip">git worktree add ../feature-x && cd ../feature-x && claude</div>
+      </div>
+      <div class="rule gold">
+        <div class="rule-title">Always create a branch before Claude touches code</div>
+        <div class="rule-desc">One task per branch. Never let agents work directly on main. Small, focused PRs: the Anthropic team's median is 118 lines across 141 PRs, with 45K lines changed in a single day. Small PRs = fast reviews = fast feedback loops.</div>
+      </div>
+      <div class="rule purple">
+        <div class="rule-title">Squash merge everything from agent branches</div>
+        <div class="rule-desc">Squash merging gives you a clean linear history, one commit per feature, easy git revert and git bisect. Agent-generated intermediate commits are noise — they reflect the model's thinking process, not your project's history. Squash them away.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 6: CLAUDE.MD ═══ -->
+<section class="content-section fade-up" id="claudemd">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div class="section-title-group">
+      <h2>CLAUDE.md Mastery</h2>
+      <p>Infrastructure · As essential as .gitignore</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Community Consensus 2026</div>
+    <p>CLAUDE.md is now as important as .gitignore — it's essential infrastructure, not optional docs. Every project needs one. It's the permanent brain that survives session resets.</p>
+  </div>
+
+  <div class="pillar open">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">CM-01</span>
+      <span class="phead-title">The 100-line rule (Boris Cherny's secret)</span>
+      <span class="phead-tag">Structure</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="rule teal">
+        <div class="rule-title">Boris's CLAUDE.md is ~100 lines. Most devs write 500–1000. Boris's works better.</div>
+        <div class="rule-desc">Every line must earn its place. For each line ask: "Would removing this cause Claude to make mistakes?" If not, cut it. Bloated files cause Claude to ignore your actual instructions — critical rules get lost in the noise.</div>
+      </div>
+      <div class="rule gold">
+        <div class="rule-title">The 10-section structure that works</div>
+        <div class="rule-desc">Project overview · Tech stack · Architecture · Code standards · Key file locations · Common commands · Workflow rules · Gotchas/quirks · Lessons learned · Agent delegation rules. Each section earns its place by preventing a specific class of mistake.</div>
+      </div>
+      <div class="rule purple">
+        <div class="rule-title">Use @imports for detailed sections — not inline walls of text</div>
+        <div class="rule-desc">Root CLAUDE.md stays 50–100 lines with @imports for sub-sections. Domain knowledge and niche workflows live in child CLAUDE.md files per directory — Claude loads them on demand without bloating every session.</div>
+        <div class="tip">@./docs/auth-patterns.md — loaded only when working in the auth module</div>
+      </div>
+      <div class="rule coral">
+        <div class="rule-title">Treat it like code: version, review, prune regularly</div>
+        <div class="rule-desc">Check it into git. Never add to .gitignore — it's documentation AND institutional knowledge AND onboarding material for new developers. Review it when things go wrong. Update it multiple times a week as the codebase evolves.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 7: SELF-IMPROVEMENT ═══ -->
+<section class="content-section fade-up" id="selfimprove">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div class="section-title-group">
+      <h2>The Self-Improvement Loop</h2>
+      <p>Compounding gains · Every correction becomes a permanent rule</p>
+    </div>
+  </div>
+
+  <div class="pillar open">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">SI-01</span>
+      <span class="phead-title">Boris's 6-step compounding loop</span>
+      <span class="phead-tag">Compounding</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="rule teal">
+        <div class="rule-title">The loop: Plan → Execute → Review → Correct → Write rule → Import into CLAUDE.md</div>
+        <div class="rule-desc">Each correction you encode makes every future session better. This is compounding engineering — the kind that builds a real competitive moat over time. After 6 months of consistent looping, your CLAUDE.md knows your codebase better than most new hires.</div>
+        <div class="tip">After any correction: "Write a rule in tasks/lessons.md that prevents this mistake."</div>
+      </div>
+      <div class="rule gold">
+        <div class="rule-title">The 3 principles at the bottom of Boris's file</div>
+        <div class="rule-desc">1. Make every change as simple as possible. Delete lines, don't add them. 2. Fix root causes — no band-aids, no temporary fixes. 3. Only touch what's necessary — no side effects, no scope creep. These 3 lines prevent more bugs than any linter.</div>
+      </div>
+      <div class="rule purple">
+        <div class="rule-title">Use "IMPORTANT" and "YOU MUST" for critical rules</div>
+        <div class="rule-desc">Emphasis works. If Claude keeps violating a rule despite it being in CLAUDE.md, the file is either too long (rule gets lost) or the phrasing is ambiguous. Add emphasis or move the rule to the top. Don't tolerate repeated violations — encode them away.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 8: SLASH COMMANDS ═══ -->
+<section class="content-section fade-up" id="commands">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <div class="section-title-group">
+      <h2>Custom Slash Commands</h2>
+      <p>Automation · Your personal CLI for recurring workflows</p>
+    </div>
+  </div>
+
+  <div class="pillar open">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">SC-01</span>
+      <span class="phead-title">Build commands for every recurring workflow</span>
+      <span class="phead-tag">Automation</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="rule teal">
+        <div class="rule-title">Teams with 5+ documented workflows onboard 25% faster</div>
+        <div class="rule-desc">A documented workflow is a workflow that improves. Each custom command pays for itself from the second use. Build commands for: code review, PR prep, test generation, refactoring, documentation, and dependency audits.</div>
+      </div>
+      <div class="code"># .claude/commands/review.md
+Review the modified code in the current branch:
+1. Check TypeScript strict compliance
+2. Identify performance issues  
+3. Suggest missing tests
+4. Check for unused imports and dead code
+5. Verify no secrets or credentials in diff
+
+→ available as /project:review</div>
+      <div class="rule gold">
+        <div class="rule-title">Use /loop and /schedule for recurring tasks</div>
+        <div class="rule-desc">/loop runs monitoring tasks locally for up to 3 days. /schedule runs cloud-based recurring tasks even when your machine is off. Use these for background quality checks, automated testing sweeps, and dependency audits.</div>
+      </div>
+      <div class="rule purple">
+        <div class="rule-title">Permission levels per environment</div>
+        <div class="rule-desc">Local dev = permissive. CI/CD = restricted to read + test + lint only. Code review = read-only. Configure once in global CLAUDE.md, adjust per project. Security should never be a barrier to productivity.</div>
+        <div class="tip">/sandbox reduces permission prompts by 84% — use it for all exploratory work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 9: MULTI-AGENT ═══ -->
+<section class="content-section fade-up" id="multiagent">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div class="section-title-group">
+      <h2>Multi-Agent Systems</h2>
+      <p>Architecture · The mental model shift from conductor to orchestrator</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">The Paradigm Shift</div>
+    <p>You are no longer the lead engineer. You talk to a lead agent. In 2026, top engineers stop talking to individual agents and start talking to an orchestrator that conducts the fleet. You design the system and verify the output.</p>
+  </div>
+
+  <div class="pillar open">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">MA-01</span>
+      <span class="phead-title">Old model vs new model</span>
+      <span class="phead-tag">Core concept</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="tier-row">
+        <span class="tier-badge t-coral">Old Model</span>
+        <div class="tier-text">You → Single agent → Output (sequential, context-capped, all-or-nothing)</div>
+      </div>
+      <div class="tier-row">
+        <span class="tier-badge t-teal">New Model</span>
+        <div class="tier-text"><strong>You → Orchestrator → [Frontend agent | Backend agent | Security agent | Test agent] → Parallel output → Synthesis → Verified PR</strong></div>
+      </div>
+      <div class="rule teal" style="margin-top:14px">
+        <div class="rule-title">Strong engineers get MORE leverage, not less</div>
+        <div class="rule-desc">A vague spec multiplies errors across dozens of parallel runs. A precise spec — with clear architecture, integration boundaries, edge cases, and invariants — multiplies into precise implementations everywhere. Your value shifts from typing speed to specification quality.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 10: PATTERNS ═══ -->
+<section class="content-section fade-up" id="patterns">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-title-group">
+      <h2>The 4 Production Orchestration Patterns</h2>
+      <p>Architecture · Choose the right topology for the task</p>
+    </div>
+  </div>
+
+  <div class="pillar open">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">OP-01</span>
+      <span class="phead-title">All 4 patterns explained</span>
+      <span class="phead-tag">Architecture</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="rule teal">
+        <div class="rule-title">1. Pipeline — sequential stages, highest accuracy</div>
+        <div class="rule-desc">Research agent → Draft agent → Review agent. Each output becomes the next input. Use for content generation, document processing, multi-step transformations. Tradeoff: more latency, highest accuracy. Best when correctness matters more than speed.</div>
+      </div>
+      <div class="rule gold">
+        <div class="rule-title">2. Orchestrator-Worker — parallel execution, 90.2% higher success</div>
+        <div class="rule-desc">One orchestrator decomposes the task and delegates to specialist workers in parallel, then synthesizes results. Best for codebases with clear module boundaries. Start with 1 orchestrator + 1 worker. Add agents only when you have evidence of a bottleneck.</div>
+        <div class="tip">Start small: 1 orchestrator + 1 worker. Add agents only with evidence, not intuition.</div>
+      </div>
+      <div class="rule purple">
+        <div class="rule-title">3. Router — classify and dispatch</div>
+        <div class="rule-desc">A triage agent classifies the request type and routes to the specialist: Bug → Debug agent, Feature → Architecture agent, Refactor → Refactoring agent, Question → Research agent. Keeps each specialist's context clean and focused.</div>
+      </div>
+      <div class="rule coral">
+        <div class="rule-title">4. Plan-and-Execute — 90% cost reduction</div>
+        <div class="rule-desc">Frontier model (Claude Opus) creates the strategy. Cheaper model (Claude Haiku) executes the steps. Reduces cost by 90% vs running Opus for everything. Model tiering is now a standard architectural decision, not an optimization afterthought.</div>
+      </div>
+      <div class="rule" style="margin-top:6px">
+        <div class="rule-title">The merge rule</div>
+        <div class="rule-desc">If two agents spend more than 80% of their time on similar tasks → merge them. If one agent's context is consistently polluted by unrelated responsibilities → split it. Don't over-engineer the topology. Start simple, split only when necessary.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 11: 3-TIER STACK ═══ -->
+<section class="content-section fade-up" id="tier3">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div class="section-title-group">
+      <h2>The 3-Tier Orchestration Stack</h2>
+      <p>Addy Osmani's framework · Use all three tiers</p>
+    </div>
+  </div>
+
+  <div class="pillar open">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">TS-01</span>
+      <span class="phead-title">Which tier for which work</span>
+      <span class="phead-tag">Strategy</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="tier-row">
+        <span class="tier-badge t-purple">Tier 1</span>
+        <div class="tier-text"><strong>Single terminal, interactive.</strong> Claude Code subagents, Claude Squad. Start here. Best for exploratory work and 3–5 agent teams on known codebases. You're in control and watching in real-time.</div>
+      </div>
+      <div class="tier-row">
+        <span class="tier-badge t-teal">Tier 2</span>
+        <div class="tier-text"><strong>Local multi-session, dashboard-driven.</strong> Conductor, Vibe Kanban, Gastown. Your machine, multiple worktrees, diff review + merge control. Best for 3–10 agent parallel sprints where you need oversight but want parallelism.</div>
+      </div>
+      <div class="tier-row">
+        <span class="tier-badge t-gold">Tier 3</span>
+        <div class="tier-text"><strong>Cloud agents, fire and forget.</strong> Claude Code Web, GitHub Copilot Coding Agent, Jules (Google), Codex Web. Assign a task, close your laptop, return to a PR. Best for draining backlogs and background tech debt elimination.</div>
+      </div>
+      <div class="rule teal" style="margin-top:14px">
+        <div class="rule-title">Most top developers in 2026 use all three tiers</div>
+        <div class="rule-desc">Tier 1 for interactive work, Tier 2 for parallel feature sprints, Tier 3 for background tasks and tech debt. Don't outsource your mastery of agents to tools — understanding the coordination patterns matters more than any specific tool you use.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 12: MCP + A2A ═══ -->
+<section class="content-section fade-up" id="mcp">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <div class="section-title-group">
+      <h2>MCP + A2A: The New HTTP for Agents</h2>
+      <p>Protocols · The connectivity layer that makes agent fleets possible</p>
+    </div>
+  </div>
+
+  <div class="pillar open">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">MP-01</span>
+      <span class="phead-title">MCP and A2A explained</span>
+      <span class="phead-tag">Protocols</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="rule teal">
+        <div class="rule-title">MCP is the plug-and-play layer for tool connectivity</div>
+        <div class="rule-desc">Model Context Protocol standardizes how agents connect to external tools, databases, and APIs. Custom integration work becomes plug-and-play. Use lazy loading — tools activate only when context triggers them. 78% startup cost savings with lazy MCP loading.</div>
+      </div>
+      <div class="rule gold">
+        <div class="rule-title">A2A enables cross-agent collaboration at scale</div>
+        <div class="rule-desc">Google's Agent-to-Agent Protocol lets agents from different vendors and platforms communicate peer-to-peer. You can now compose agents from standardized components rather than building monolithic proprietary systems. This is the shift from islands to infrastructure.</div>
+      </div>
+      <div class="rule purple">
+        <div class="rule-title">Production MCP config: always apply these 3 safety settings</div>
+        <div class="rule-desc">Set read_only: true for all production data MCP servers. Use lazy_load with triggers so tools don't bloat context on every session. Block sensitive path patterns (*.env, *.key, */secrets/*) at the config level — not as a prompt-time reminder.</div>
+        <div class="tip">The circuit breaker rule: error rate &gt; 1% = automatic halt. No exceptions.</div>
+      </div>
+      <div class="code">// Production MCP config
+{
+  "postgres": {
+    "read_only": true,
+    "lazy_load": true,
+    "triggers": ["database", "sql", "schema"],
+    "blocked_patterns": ["*.env", "*.key", "*/secrets/*"]
+  },
+  "github": {
+    "lazy_load": true,
+    "triggers": ["git", "pr", "commit", "branch"]
+  }
+}</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 13: SECURITY & SAFETY ═══ -->
+<section class="content-section fade-up" id="security">
+  <div class="section-header">
+    <div class="section-num">13</div>
+    <div class="section-title-group">
+      <h2>Security &amp; Safety in Agentic Systems</h2>
+      <p>Non-negotiable · The blast radius you don't see is the one that hurts</p>
+    </div>
+  </div>
+
+  <div class="callout callout-warning">
+    <div class="callout-label">Critical 2026 Finding</div>
+    <p>Agentic systems operate with broad permissions and can take irreversible actions. The #1 cause of agentic incidents in 2026 is under-scoped permission boundaries — not model errors. Security must be designed in, not bolted on after the fact.</p>
+  </div>
+
+  <div class="pillar open">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">SS-01</span>
+      <span class="phead-title">The 5 security primitives every agentic system needs</span>
+      <span class="phead-tag">Non-Negotiable</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="rule coral">
+        <div class="rule-title">Principle of Least Privilege — always</div>
+        <div class="rule-desc">Every agent gets only the permissions required for its current task — nothing more. Read-only access for research agents. Write access scoped only to sandboxed directories. Never grant production database write access unless the task explicitly requires it and a human approves it. Default stance: read-only. Escalate with explicit justification logged.</div>
+        <div class="tip">MCP read_only: true for all production data sources. Block *.env, *.key at config level — not as a prompt reminder.</div>
+      </div>
+      <div class="rule teal">
+        <div class="rule-title">Blast Radius Minimization</div>
+        <div class="rule-desc">Design every agent workflow so the worst-case failure affects the smallest possible surface area. Use isolated git branches, sandboxed environments, and ephemeral containers. Never allow an agent's error to cascade into production. The isolation you build upfront is insurance you'll never regret paying for — because the one time you skip it will cost more than all the times you didn't.</div>
+      </div>
+      <div class="rule gold">
+        <div class="rule-title">Human-in-the-Loop Checkpoints</div>
+        <div class="rule-desc">Hardcode approval gates before any irreversible action: file deletion, production database writes, external API calls with cost implications, or any code pushed to main. Define your irreversibility threshold upfront — anything above it requires explicit human sign-off. These checkpoints are not friction; they are what makes autonomous systems trustworthy.</div>
+        <div class="tip">Rule: any action that cannot be undone in &lt;60 seconds requires human confirmation before execution.</div>
+      </div>
+      <div class="rule purple">
+        <div class="rule-title">Prompt Injection Protection</div>
+        <div class="rule-desc">When agents read from external sources — web pages, files, APIs, user input — malicious content can inject instructions directly into the agent's context. Always sanitize external data before injection. Never pass raw user input to an orchestrator. Use typed schemas for agent-to-agent communication, not freeform text. Treat all external content as untrusted input, because it is.</div>
+      </div>
+      <div class="rule coral">
+        <div class="rule-title">Secret Management — never in the context window</div>
+        <div class="rule-desc">API keys, credentials, and secrets must never appear in the context window — they get logged, cached, and can be leaked. Use environment variables and dedicated secret managers (AWS Secrets Manager, HashiCorp Vault, 1Password CLI). Block sensitive patterns at the MCP config layer, not as a conversational instruction Claude can forget.</div>
+        <div class="tip">Use a secrets manager CLI, not .env files in the project root. Never mention a secret value in a prompt — even to explain it.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">SS-02</span>
+      <span class="phead-title">Audit trails and circuit breakers for production agents</span>
+      <span class="phead-tag">Production</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="rule gold">
+        <div class="rule-title">Log every agent action with its justification</div>
+        <div class="rule-desc">Every file touched, command run, and API call made should be logged with the agent's stated reasoning. This is your post-mortem trail. Without it, debugging a multi-agent failure is archaeology. Use structured JSON logging. In regulated environments, store logs with tamper-evident checksums and a 90-day retention minimum.</div>
+      </div>
+      <div class="rule teal">
+        <div class="rule-title">The circuit breaker pattern</div>
+        <div class="rule-desc">If an agent exceeds a defined error rate — e.g., &gt;1% of operations fail — halt the entire workflow automatically. Don't let a failing agent spiral into a cascading fleet failure. Circuit breakers belong in the orchestrator as a first-class architectural feature, not as an emergency afterthought. Build them before you need them.</div>
+        <div class="tip">Circuit breaker threshold: error rate &gt;1% = automatic halt + alert + rollback. No exceptions, no override flags.</div>
+      </div>
+      <div class="code">// Minimal agent audit log schema (JSON)
+{
+  "ts":              "2026-04-27T14:23:01Z",
+  "agent_id":        "backend-worker-3",
+  "action":          "file.write",
+  "path":            "src/auth/middleware.ts",
+  "justification":   "Adding rate-limit guard per spec PL-01",
+  "approved_by":     "orchestrator",
+  "reversible":      true,
+  "rollback_cmd":    "git checkout src/auth/middleware.ts",
+  "session_id":      "ses_abc123",
+  "error_rate":      0.000
+}</div>
+    </div>
+  </div>
+</section>
+<section class="content-section fade-up" id="tools">
+  <div class="section-header">
+    <div class="section-num">12</div>
+    <div class="section-title-group">
+      <h2>Tools & Stack</h2>
+      <p>Decision matrix · Right tool for the right job</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">The Golden Rule</div>
+    <p>Don't outsource your mastery of agents to tools. Understand the coordination patterns first, then pick the tool. A well-designed 2-agent system beats a poorly designed 10-agent one every time.</p>
+  </div>
+
+  <div class="pillar open">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">TL-01</span>
+      <span class="phead-title">When to use which tool</span>
+      <span class="phead-tag">Decision Matrix</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="tool-grid">
+        <div class="tool-card">
+          <div class="tool-name">Claude Code</div>
+          <div class="tool-use">Long autonomous tasks, multi-agent orchestration, codebase-wide refactors, MCP integration, anything requiring sustained multi-step execution. Your primary agentic terminal.</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-name">GitHub Copilot</div>
+          <div class="tool-use">Inline autocomplete, quick single-function generation, IDE-native flow, pair programming feel. Complementary to Claude Code — they don't overlap, they compound.</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-name">Cursor</div>
+          <div class="tool-use">Interactive in-editor agent mode, fast iteration on focused files, visual diff review. Best for synchronous work where you want to see changes happen in context.</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-name">Codex / Jules</div>
+          <div class="tool-use">Cloud agents for background task execution. Fire-and-forget: assign a PR-ready task, return to a diff. Best for draining backlog items overnight without burning compute hours interactively.</div>
+        </div>
+      </div>
+      <div class="rule teal" style="margin-top:14px">
+        <div class="rule-title">The two-tool stack that works best</div>
+        <div class="rule-desc">Copilot handles inline autocomplete in the IDE. Claude Code handles everything agentic in the terminal. They don't overlap — they complement. This is the most common high-productivity setup in 2026. Start here before adding complexity.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-head" onclick="toggle(this)">
+      <span class="phead-num">TL-02</span>
+      <span class="phead-title">Multi-agent frameworks</span>
+      <span class="phead-tag">When You Need More</span>
+      <span class="phead-chevron">▾</span>
+    </div>
+    <div class="pillar-body">
+      <div class="tool-grid">
+        <div class="tool-card">
+          <div class="tool-name">LangGraph</div>
+          <div class="tool-use">Graph-based workflows with typed state. Best for complex branching, loops, and visual monitoring of agent transitions. Most searched framework in 2026.</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-name">CrewAI</div>
+          <div class="tool-use">Role-based agents with distinct responsibilities. Best when you need agents that mirror how a human team works. Great for content and research workflows.</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-name">AutoGen / Semantic Kernel</div>
+          <div class="tool-use">Enterprise-grade orchestration with OpenTelemetry tracing and self-healing properties. Use when you need full observability and compliance-grade audit trails.</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-name">Claude SDK</div>
+          <div class="tool-use">Native Anthropic agent framework. Tightest integration with Claude models, MCP, and A2A. Best if you're building Claude-native products from the ground up.</div>
+        </div>
+      </div>
+      <div class="rule gold" style="margin-top:14px">
+        <div class="rule-title">Model tiering for 40–60% cost reduction</div>
+        <div class="rule-desc">Mixing models reduces costs 40–60% vs running one premium model everywhere. Claude Haiku for triage/routing, Claude Sonnet for standard tasks, Claude Opus for complex reasoning and orchestration. This is now a standard architectural decision.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 14: MINDSET ═══ -->
+<section class="content-section fade-up" id="mindset">
+  <div class="section-header">
+    <div class="section-num">13</div>
+    <div class="section-title-group">
+      <h2>Mindset Shifts That Unlock 100X</h2>
+      <p>Mental models · The questions that change everything</p>
+    </div>
+  </div>
+
+  <div class="mindset-grid">
+    <div class="mindset-card">
+      <div class="mindset-q">"Am I writing code or designing systems?"</div>
+      <div class="mindset-a">The most valuable engineers in 2026 aren't those who type the fastest. They're those who design coordination systems. Shift your identity from code writer to system designer. Your leverage is in what you architect, not what you type.</div>
+    </div>
+    <div class="mindset-card">
+      <div class="mindset-q">"Is this task verifiable quickly?"</div>
+      <div class="mindset-a">If yes → delegate fully and aggressively. If not → work collaboratively with Claude. The delegation intuition is a skill you build over time. Start by delegating anything with clear acceptance criteria.</div>
+    </div>
+    <div class="mindset-card">
+      <div class="mindset-q">"Am I treating agents as leverage or magic?"</div>
+      <div class="mindset-a">Treat agents as leverage, not magic. Use them aggressively where speed is cheap. Be conservative where mistakes are expensive. The 80% problem — AI solutions that are almost right — comes from skipping verification.</div>
+    </div>
+    <div class="mindset-card">
+      <div class="mindset-q">"Is my codebase agent-ready?"</div>
+      <div class="mindset-a">Agents struggle with disorganized codebases, unclear conventions, and missing documentation. A well-structured project enables dramatically better agent performance. Investment in code organization compounds as you scale agents.</div>
+    </div>
+    <div class="mindset-card">
+      <div class="mindset-q">"What would a staff engineer say is wrong here?"</div>
+      <div class="mindset-a">The single best quality-gate prompt. Ask it after every significant agent output. Build it into your slash commands. This is Boris Cherny's verification standard — never mark a task complete without passing it.</div>
+    </div>
+    <div class="mindset-card">
+      <div class="mindset-q">"Am I compounding or just consuming?"</div>
+      <div class="mindset-a">The self-improvement loop is the difference between linear and exponential productivity. Every session where you don't encode a lesson is a session that didn't compound. After 6 months of looping, your CLAUDE.md is a serious competitive moat.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 16: ANTI-PATTERNS ═══ -->
+<section class="content-section fade-up" id="antipatterns">
+  <div class="section-header">
+    <div class="section-num">16</div>
+    <div class="section-title-group">
+      <h2>10 Anti-Patterns That Kill Agentic Velocity</h2>
+      <p>Failure modes · Recognise them before they compound into real damage</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">The Hidden Tax</div>
+    <p>Most developers unknowingly sacrifice 40–60% of their agentic productivity to just 3 of these patterns: not encoding lessons, skipping planning, and over-trusting output. Recognising them is the first step to eliminating them permanently.</p>
+  </div>
+
+  <div class="antipattern-grid">
+    <div class="ap-card">
+      <div class="ap-num">01</div>
+      <div class="ap-title">Context Window Hoarding</div>
+      <div class="ap-desc">Running the same session for hours, accumulating irrelevant context. Each distinct task deserves a fresh, focused window. Use /clear aggressively — treat sessions like git branches.</div>
+    </div>
+    <div class="ap-card">
+      <div class="ap-num">02</div>
+      <div class="ap-title">Over-trusting Agent Output</div>
+      <div class="ap-desc">"It compiled, ship it." Every PR requires human review. Build pattern recognition for agent failure modes: silent scope creep, confident hallucination, over-engineering of simple problems.</div>
+    </div>
+    <div class="ap-card">
+      <div class="ap-num">03</div>
+      <div class="ap-title">Building Monolithic Agents</div>
+      <div class="ap-desc">One agent that handles frontend + backend + tests + docs. It fails at all of them. Specialist agents with isolated contexts dramatically outperform single-context generalists on every measurable metric.</div>
+    </div>
+    <div class="ap-card">
+      <div class="ap-num">04</div>
+      <div class="ap-title">Skipping the Planning Phase</div>
+      <div class="ap-desc">Jumping straight to execution on a 3+ file task. A bad spec costs 10× more to fix post-execution than pre-execution. Plan Mode is non-negotiable. The spec is the product, not the overhead.</div>
+    </div>
+    <div class="ap-card">
+      <div class="ap-num">05</div>
+      <div class="ap-title">Not Encoding Corrections</div>
+      <div class="ap-desc">Correcting Claude verbally in the session, then repeating the same correction the next day. Every correction not written to CLAUDE.md is a correction that doesn't compound into your permanent advantage.</div>
+    </div>
+    <div class="ap-card">
+      <div class="ap-num">06</div>
+      <div class="ap-title">Agents Working on Main</div>
+      <div class="ap-desc">Letting Claude work directly on main or staging. One branch per task, one worktree per session — always. Worktrees are free to create. Rollbacks from production incidents are not.</div>
+    </div>
+    <div class="ap-card">
+      <div class="ap-num">07</div>
+      <div class="ap-title">Opus for Everything</div>
+      <div class="ap-desc">Using your most powerful and expensive model for routing, triage, and formatting. Model tiering saves 40–60% in cost with zero accuracy loss on appropriate tasks. Haiku for triage, Sonnet for standard tasks, Opus for complex reasoning only.</div>
+    </div>
+    <div class="ap-card">
+      <div class="ap-num">08</div>
+      <div class="ap-title">No Feedback Loops in CLAUDE.md</div>
+      <div class="ap-desc">A CLAUDE.md that doesn't tell Claude to run tests after changes. Without this loop, Claude assumes changes work and moves on. A single "run pytest after every Python edit" line can 2–3× output quality alone.</div>
+    </div>
+    <div class="ap-card">
+      <div class="ap-num">09</div>
+      <div class="ap-title">Fuzzy Agent Boundaries</div>
+      <div class="ap-desc">Agents with vague responsibilities like "handle the backend." Without crisp integration contracts — types, schemas, API boundaries — agents generate code that conflicts with each other's silent assumptions.</div>
+    </div>
+    <div class="ap-card">
+      <div class="ap-num">10</div>
+      <div class="ap-title">Premature Orchestration Complexity</div>
+      <div class="ap-desc">Building 10-agent systems before validating that a 2-agent solution doesn't solve the problem. Every agent you add multiplies coordination overhead and failure surface. Start minimal. Expand only with performance evidence, never intuition.</div>
+    </div>
+  </div>
+</section>
+<section class="content-section fade-up" id="hierarchy">
+  <div class="section-header">
+    <div class="section-num">14</div>
+    <div class="section-title-group">
+      <h2>The Engineering Hierarchy</h2>
+      <p>Where are you? Where are you going?</p>
+    </div>
+  </div>
+
+  <div class="hierarchy">
+    <div class="hier-row">
+      <div class="hier-level l1">L1</div>
+      <div class="hier-content">
+        <div class="hier-title">Tool Operator</div>
+        <div class="hier-desc">Uses AI for autocomplete and basic generation. Reactive, session-bound, no persistence. Commodity tier — being automated away by L3+ engineers.</div>
+      </div>
+      <div class="hier-bar">
+        <div class="hier-prog"><div class="hier-fill" style="width:25%;background:var(--coral)"></div></div>
+      </div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-level l2">L2</div>
+      <div class="hier-content">
+        <div class="hier-title">Context Engineer</div>
+        <div class="hier-desc">Masters SELECT/WRITE/COMPRESS/ISOLATE. Designs persistent context architectures. CLAUDE.md as infrastructure. Professional tier — increasing leverage week over week.</div>
+      </div>
+      <div class="hier-bar">
+        <div class="hier-prog"><div class="hier-fill" style="width:50%;background:var(--amber)"></div></div>
+      </div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-level l3">L3</div>
+      <div class="hier-content">
+        <div class="hier-title">Agent Architect</div>
+        <div class="hier-desc">Designs multi-agent systems with safety constraints. Orchestrates autonomous workflows. Expert tier — top 10%. Talks to orchestrators, not individual agents.</div>
+      </div>
+      <div class="hier-bar">
+        <div class="hier-prog"><div class="hier-fill" style="width:75%;background:var(--teal)"></div></div>
+      </div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-level l4">L4</div>
+      <div class="hier-content">
+        <div class="hier-title">Autonomous Systems Engineer</div>
+        <div class="hier-desc">Builds self-improving, self-healing software systems. AI manages AI. Elite tier — top 1–2%. The system designs itself and fixes itself. The engineer designs the system that does this.</div>
+      </div>
+      <div class="hier-bar">
+        <div class="hier-prog"><div class="hier-fill" style="width:100%;background:var(--purple)"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:1.5rem">
+    <div class="callout-label">Final Principle</div>
+    <p>Your competitive advantage isn't using AI. It's designing systems where AI operates at peak effectiveness through superior context engineering and safety architecture. The organizations pulling ahead aren't removing engineers — they're making engineer expertise count where it matters most.</p>
+  </div>
+</section>
+
+<!-- ═══ SECTION 16: ACTION PLAN ═══ -->
+<section class="content-section fade-up" id="action">
+  <div class="section-header">
+    <div class="section-num">15</div>
+    <div class="section-title-group">
+      <h2>Week 1 Action Plan</h2>
+      <p>Start here · One concrete task per day</p>
+    </div>
+  </div>
+
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="action-day">Day 1</div>
+      <div class="action-title">CLAUDE.md Foundation</div>
+      <ul class="action-items">
+        <li>Run /init on your main project</li>
+        <li>Refine the CLAUDE.md to ~100 lines</li>
+        <li>Add your 3 most common workflows as slash commands</li>
+        <li>Set up tasks/lessons.md for the self-improvement loop</li>
+      </ul>
+    </div>
+    <div class="action-card">
+      <div class="action-day">Day 2</div>
+      <div class="action-title">Git Worktree Setup</div>
+      <ul class="action-items">
+        <li>Set up git worktrees for parallel sessions</li>
+        <li>Run 3 parallel Claude sessions on 3 independent tasks</li>
+        <li>Practice the merge + review workflow</li>
+        <li>Configure squash merge as your default</li>
+      </ul>
+    </div>
+    <div class="action-card">
+      <div class="action-day">Day 3</div>
+      <div class="action-title">First Specialist Agent</div>
+      <ul class="action-items">
+        <li>Write your Code Reviewer agent in .claude/agents/</li>
+        <li>Wire it into your PR workflow</li>
+        <li>Test it on your most recent PR</li>
+        <li>Document its rules in CLAUDE.md</li>
+      </ul>
+    </div>
+    <div class="action-card">
+      <div class="action-day">Day 4</div>
+      <div class="action-title">Self-Improvement Loop</div>
+      <ul class="action-items">
+        <li>Activate the lessons.md loop permanently</li>
+        <li>Every correction from today → a rule</li>
+        <li>Review and prune your CLAUDE.md</li>
+        <li>Build your first /project:review command</li>
+      </ul>
+    </div>
+    <div class="action-card">
+      <div class="action-day">Day 5</div>
+      <div class="action-title">MCP Integration</div>
+      <ul class="action-items">
+        <li>Set up your first MCP server (GitHub or filesystem)</li>
+        <li>Configure lazy loading and triggers</li>
+        <li>Block sensitive path patterns</li>
+        <li>Test the circuit breaker rule</li>
+      </ul>
+    </div>
+    <div class="action-card" style="background:var(--ink);color:var(--paper)">
+      <div class="action-day" style="color:rgba(245,242,236,0.5)">Week 2+</div>
+      <div class="action-title" style="color:var(--paper)">Orchestrator Build</div>
+      <ul class="action-items">
+        <li style="color:rgba(245,242,236,0.75)">Design your orchestrator agent</li>
+        <li style="color:rgba(245,242,236,0.75)">Add specialist agents one at a time</li>
+        <li style="color:rgba(245,242,236,0.75)">Measure quality vs your baseline</li>
+        <li style="color:rgba(245,242,236,0.75)">Compound from there. Indefinitely.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-left">Agentic Engineering Bible</div>
+  <div class="footer-right">
+    April 2026 Edition &middot; Research Synthesis<br>
+    Synthesized from Anthropic, Boris Cherny &amp; Addy Osmani.<br>
+    Share freely. Build better systems.
+  </div>
+</footer>
+
+<script>
+// ── Toggle pillars ──
+function toggle(head) {
+  head.parentElement.classList.toggle('open');
+}
+
+// ── Reading progress bar ──
+const bar = document.getElementById('readingBar');
+window.addEventListener('scroll', () => {
+  const total = document.body.scrollHeight - window.innerHeight;
+  bar.style.width = total > 0 ? (window.scrollY / total * 100) + '%' : '0%';
+}, { passive: true });
+
+// ── Fade-in on scroll ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.07 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── Sidebar active link highlight ──
+const sections = document.querySelectorAll('.content-section[id]');
+const navLinks = document.querySelectorAll('.sidebar-nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}, { passive: true });
+
+// ── Mobile sidebar (hamburger) ──
+const hamburger = document.getElementById('hamburger');
+const sidebar   = document.getElementById('sidebar');
+const overlay   = document.getElementById('sidebarOverlay');
+const sideClose = document.getElementById('sidebarClose');
+
+function openNav() {
+  sidebar.classList.add('open');
+  overlay.classList.add('active');
+  hamburger.classList.add('active');
+  hamburger.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeNav() {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('active');
+  hamburger.classList.remove('active');
+  hamburger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', () =>
+  sidebar.classList.contains('open') ? closeNav() : openNav()
+);
+overlay.addEventListener('click', closeNav);
+sideClose.addEventListener('click', closeNav);
+
+// Close when a nav link is tapped on mobile
+navLinks.forEach(a => a.addEventListener('click', () => {
+  if (window.innerWidth <= 800) closeNav();
+}));
+
+// Close on Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && sidebar.classList.contains('open')) closeNav();
+});
+
+// ── Back to top ──
+const btt = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('visible', window.scrollY > 500);
+}, { passive: true });
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+</body>
+</html>
