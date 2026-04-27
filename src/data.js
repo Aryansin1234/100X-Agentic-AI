@@ -207,21 +207,24 @@ if (context_usage > 0.95) {
       label: `Recommended .claude/ folder structure`,
       content: `project-root/
 ├── CLAUDE.md                     # Root — 50–100 lines max
-│                                 # Project overview, commands, global rules
+│   ├── ## Rules                  # NEVER / ALWAYS / YOU MUST constraints
+│   ├── ## Project Overview       # Tech stack, architecture, key files
+│   └── ## Workflow               # How Claude should work in this codebase
+│
 ├── .claude/
-│   ├── agents/                   # Sub-agent definitions
+│   ├── agents/                   # Specialist sub-agent definitions
 │   │   ├── code-reviewer.md      # Invoked for PR reviews
 │   │   ├── test-writer.md        # Generates test suites
 │   │   └── security-auditor.md  # Scans for vulnerabilities
 │   │
-│   ├── commands/                 # Custom slash commands (skills)
+│   ├── commands/                 # Skills — reusable slash commands
 │   │   ├── review.md             # /project:review
 │   │   ├── pr-prep.md            # /project:pr-prep
-│   │   └── refactor.md          # /project:refactor
+│   │   └── deploy.md             # /project:deploy
 │   │
 │   ├── hooks/                    # Lifecycle automation scripts
-│   │   ├── post-write.sh         # Runs lint/typecheck after file edits
-│   │   └── pre-bash.sh           # Validates bash commands before execution
+│   │   ├── post-write.sh         # Auto lint/test after every file write
+│   │   └── pre-bash.sh           # Validate bash before execution
 │   │
 │   └── settings.json             # MCP servers, permissions, hooks config
 │
@@ -359,16 +362,17 @@ You are a test engineering specialist.
       },
       {
         name: `rules`,
+        displayPath: `CLAUDE.md → ## Rules`,
         icon: `📋`,
         color: `gold`,
-        what: `Hard constraints written directly in CLAUDE.md using emphatic keywords (NEVER, ALWAYS, YOU MUST, IMPORTANT). Rules are the contract between you and Claude — they encode lessons learned, project invariants, and quality gates that apply to every session permanently.`,
+        what: `Hard constraints written directly in a ## Rules section inside CLAUDE.md using emphatic keywords: NEVER, ALWAYS, YOU MUST, IMPORTANT. Rules are the permanent contract between you and Claude — they encode lessons learned, project invariants, and quality gates that apply to every single session forever.`,
         howToUse: [
-          `Add a "## Rules" section to your CLAUDE.md`,
-          `Use NEVER for absolute prohibitions (things that break the codebase)`,
-          `Use ALWAYS for required habits (run tests, add types)`,
-          `Use YOU MUST for strong obligations specific to this project`,
+          `Add a "## Rules" section near the top of your CLAUDE.md`,
+          `Use NEVER for absolute prohibitions — things that break the codebase`,
+          `Use ALWAYS for required habits: run tests, create branches, add types`,
+          `Use YOU MUST for strong project-specific obligations`,
           `Use IMPORTANT for rules that are easy to forget but consequential`,
-          `After any correction in a session, immediately encode it as a rule`,
+          `After any correction in a session, immediately encode it as a rule — never repeat the same correction twice`,
         ],
         codeLabel: `CLAUDE.md — ## Rules section (real example)`,
         code: `## Rules
@@ -402,16 +406,18 @@ You are a test engineering specialist.
 3. Only touch what's necessary — no side effects, no scope creep.`,
       },
       {
-        name: `commands/ (skills)`,
+        name: `commands/`,
+        displayPath: `.claude/commands/ — Skills`,
         icon: `⚡`,
         color: `coral`,
-        what: `Markdown files in .claude/commands/ that define reusable slash commands invoked with /project:<name>. Think of these as your personal CLI for recurring workflows — code review, PR preparation, refactoring, dependency audits. Teams with 5+ documented commands onboard 25% faster.`,
+        what: `Markdown files in .claude/commands/ — these are your "skills". Each file is a reusable slash command invoked with /project:<name>. Think of them as your team's CLI for recurring workflows: code review, PR prep, refactoring, security scans. Teams with 5+ documented skills onboard 25% faster and maintain higher consistency.`,
         howToUse: [
-          `Create a .md file in .claude/commands/ — the filename becomes the command`,
-          `Write the instructions as plain text (no frontmatter needed)`,
+          `Create a .md file in .claude/commands/ — the filename becomes the skill name`,
+          `Write the instructions as plain text (no YAML frontmatter needed)`,
           `Invoke with /project:<filename> in any Claude session`,
           `Use $ARGUMENTS to pass dynamic input: /project:review src/auth.ts`,
-          `Chain commands: have one command call another for complex workflows`,
+          `Chain skills: have one skill call another for complex multi-step workflows`,
+          `Share the .claude/commands/ folder via git — skills are team infrastructure`,
         ],
         codeLabel: `.claude/commands/review.md → invoked as /project:review`,
         code: `Review the code in the current branch or $ARGUMENTS if provided.

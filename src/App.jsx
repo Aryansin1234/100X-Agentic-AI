@@ -269,6 +269,7 @@ const FOLDER_COLOR_MAP = {
 function FolderCard({ folder }) {
   const [open, setOpen] = useState(false)
   const col = FOLDER_COLOR_MAP[folder.color] || FOLDER_COLOR_MAP.teal
+  const displayPath = folder.displayPath || `.claude/${folder.name}`
 
   return (
     <div style={{
@@ -290,23 +291,29 @@ function FolderCard({ folder }) {
           transition: 'background var(--transition)',
         }}
       >
-        <span style={{ fontSize: 20, flexShrink: 0 }}>{folder.icon}</span>
+        <span style={{
+          fontSize: 20, flexShrink: 0,
+          width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
+          background: col.bg, borderRadius: 'var(--radius-sm)',
+          border: `1px solid ${col.border}`,
+        }}>{folder.icon}</span>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{
-            fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 600,
-            color: col.accent, letterSpacing: '0.04em',
+            fontFamily: 'var(--mono)', fontSize: 12.5, fontWeight: 600,
+            color: col.accent, letterSpacing: '0.03em',
             overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
           }}>
-            .claude/{folder.name}
+            {displayPath}
           </div>
-          <div style={{ fontFamily: 'var(--body)', fontSize: 12.5, color: 'var(--ink3)', marginTop: 2 }}>
-            {folder.what.slice(0, 80)}…
+          <div style={{ fontFamily: 'var(--body)', fontSize: 12, color: 'var(--ink3)', marginTop: 2, lineHeight: 1.4 }}>
+            {folder.what.slice(0, 72)}…
           </div>
         </div>
         <span style={{
           fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink4)',
           transform: open ? 'rotate(180deg)' : 'none', transition: '0.2s', flexShrink: 0,
-        }}>▾</span>
+          background: 'var(--bg2)', borderRadius: 4, padding: '2px 6px',
+        }}>{open ? 'close' : 'expand'}</span>
       </div>
 
       {open && (
@@ -355,9 +362,12 @@ function ClaudeMdSection({ section }) {
       <div style={{ margin: '2rem 0 1rem' }}>
         <div style={{
           fontFamily: 'var(--body)', fontSize: 11, fontWeight: 600,
-          textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--ink4)', marginBottom: 12,
+          textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--ink4)', marginBottom: 4,
         }}>
-          The 4 Core Folders — click to expand
+          The 4 Core Folders — click any to expand
+        </div>
+        <div style={{ fontFamily: 'var(--body)', fontSize: 12.5, color: 'var(--ink3)', marginBottom: 14 }}>
+          hooks/ · agents/ · commands/ (skills) · CLAUDE.md → ## Rules
         </div>
         {section.folders.map((f, i) => <FolderCard key={i} folder={f} />)}
       </div>
