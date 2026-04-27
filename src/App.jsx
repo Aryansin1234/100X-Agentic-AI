@@ -279,21 +279,23 @@ function FolderCard({ folder }) {
       background: 'var(--surface)',
       boxShadow: 'var(--shadow-sm)',
       overflow: 'hidden',
+      minWidth: 0,
     }}>
       <div
         onClick={() => setOpen(o => !o)}
         style={{
-          display: 'flex', alignItems: 'center', gap: 14,
-          padding: '1rem 1.25rem', cursor: 'pointer',
+          display: 'flex', alignItems: 'center', gap: 12,
+          padding: '0.9rem 1rem', cursor: 'pointer',
           background: open ? col.bg : 'var(--surface)',
           transition: 'background var(--transition)',
         }}
       >
-        <span style={{ fontSize: 22 }}>{folder.icon}</span>
-        <div style={{ flex: 1 }}>
+        <span style={{ fontSize: 20, flexShrink: 0 }}>{folder.icon}</span>
+        <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{
             fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 600,
             color: col.accent, letterSpacing: '0.04em',
+            overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
           }}>
             .claude/{folder.name}
           </div>
@@ -303,7 +305,7 @@ function FolderCard({ folder }) {
         </div>
         <span style={{
           fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink4)',
-          transform: open ? 'rotate(180deg)' : 'none', transition: '0.2s',
+          transform: open ? 'rotate(180deg)' : 'none', transition: '0.2s', flexShrink: 0,
         }}>▾</span>
       </div>
 
