@@ -601,7 +601,7 @@ Produce a Markdown table:
   "mcpServers": {
     "postgres": {
       "command": "mcp-server-postgres",
-      "args": ["--connection-string", "${DATABASE_URL}"],
+      "args": ["--connection-string", "\${DATABASE_URL}"],
       "read_only": true,
       "lazy_load": true,
       "triggers": ["database", "sql", "schema", "query"],
