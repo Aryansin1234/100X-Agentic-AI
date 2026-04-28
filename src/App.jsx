@@ -386,11 +386,56 @@ function ClaudeMdSection({ section }) {
 }
 
 // ─────────────────────────────────────────────
+//  TEACHING SECTION (structured What / How / Why)
+// ─────────────────────────────────────────────
+
+function TeachingSection({ section }) {
+  return (
+    <>
+      {section.intro && (
+        <div className="teaching-intro">{section.intro}</div>
+      )}
+      {section.blocks && (
+        <div className="teaching-grid">
+          {section.blocks.map((block, i) => (
+            <div key={i} className={`teaching-block tb-${block.type}`}>
+              <div className="tb-header">
+                <span className="tb-icon">{block.icon}</span>
+                <span className="tb-label">{block.label}</span>
+              </div>
+              <div className="tb-body">
+                <p className="tb-text">{block.text}</p>
+                {block.bullets && (
+                  <ul className="tb-list">
+                    {block.bullets.map((b, j) => <li key={j}>{b}</li>)}
+                  </ul>
+                )}
+                {block.code && <CodeBlock label={block.code.label} content={block.code.content} />}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      {section.callout && (
+        <Callout label={section.callout.label} text={section.callout.text} variant={section.callout.variant} />
+      )}
+      {section.pillars?.length > 0 && (
+        <div style={{ marginTop: '1.5rem' }}>
+          <div className="teaching-divider-label">Deep Dive — click to expand</div>
+          {section.pillars.map(p => <Pillar key={p.id} data={p} />)}
+        </div>
+      )}
+    </>
+  )
+}
+
+// ─────────────────────────────────────────────
 //  SECTION DISPATCHER
 // ─────────────────────────────────────────────
 
 function Section({ section }) {
   const renderers = {
+    teaching:     TeachingSection,
     fundamentals: FundamentalsSection,
     pillars:      PillarsSection,
     claudemd:     ClaudeMdSection,

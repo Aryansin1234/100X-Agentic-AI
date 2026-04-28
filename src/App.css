@@ -641,6 +641,89 @@ body {
   border-radius: 0 2px 2px 0; box-shadow: 0 0 8px rgba(245,158,11,0.5);
 }
 
+/* ── TEACHING BLOCKS ── */
+.teaching-intro {
+  font-family: var(--body);
+  font-size: 15px;
+  color: var(--ink2);
+  line-height: 1.85;
+  margin-bottom: 1.75rem;
+  max-width: 720px;
+}
+.teaching-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 1.75rem;
+}
+.teaching-block {
+  background: var(--surface);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.tb-what { border-top: 3px solid var(--teal); }
+.tb-how  { border-top: 3px solid var(--gold); }
+.tb-why  { border-top: 3px solid var(--purple); }
+.tb-key  { border-top: 3px solid var(--coral); }
+.tb-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.75rem 1.1rem;
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.tb-what .tb-header { background: var(--teal-light); color: var(--teal); border-bottom: 1px solid var(--teal-border); }
+.tb-how  .tb-header { background: var(--gold-light); color: var(--gold); border-bottom: 1px solid var(--gold-border); }
+.tb-why  .tb-header { background: var(--purple-light); color: var(--purple); border-bottom: 1px solid var(--purple-border); }
+.tb-key  .tb-header { background: var(--coral-light); color: var(--coral); border-bottom: 1px solid var(--coral-border); }
+.tb-icon { font-size: 16px; flex-shrink: 0; }
+.tb-body { padding: 0.85rem 1.1rem 1.1rem; }
+.tb-text {
+  font-family: var(--body);
+  font-size: 13.5px;
+  color: var(--ink2);
+  line-height: 1.75;
+  margin: 0;
+}
+.tb-list {
+  margin: 0.65rem 0 0;
+  padding-left: 0.4rem;
+  list-style: none;
+}
+.tb-list li {
+  font-family: var(--body);
+  font-size: 12.5px;
+  color: var(--ink3);
+  line-height: 1.65;
+  margin-bottom: 4px;
+  position: relative;
+  padding-left: 1.1rem;
+}
+.tb-list li::before {
+  content: '\2192';
+  position: absolute;
+  left: 0;
+  color: inherit;
+  opacity: 0.5;
+}
+.teaching-divider-label {
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink4);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
 /* ══════════════════════════════════════════
    RESPONSIVE BREAKPOINTS
    900 → tablet | 800 → mobile | 600 → small mobile | 400 → tiny
@@ -704,6 +787,13 @@ body {
 
 /* ── Small mobile (≤ 600px) ── */
 @media (max-width: 600px) {
+  /* Teaching blocks */
+  .teaching-grid { grid-template-columns: 1fr; gap: 12px; }
+  .teaching-intro { font-size: 14px; }
+  .tb-text { font-size: 13px; }
+  .tb-list li { font-size: 12px; }
+  .tb-header { padding: 0.65rem 0.9rem; font-size: 10px; }
+  .tb-body { padding: 0.75rem 0.9rem 0.9rem; }
   /* Hero */
   .hero { padding: 2.25rem 1rem 2.25rem; }
   .hero h1 { font-size: clamp(1.7rem, 7vw, 2.8rem); margin-bottom: 1.25rem; }
