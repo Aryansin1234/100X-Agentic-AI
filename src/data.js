@@ -1059,6 +1059,7 @@ Produce a Markdown table:
     title: `Graphify — Knowledge Graphs for AI Coding`,
     subtitle: `Compress your codebase into a reusable, token-efficient architectural map that persists across sessions`,
     type: `teaching`,
+    layout: `vertical`,
     intro: `The #1 problem with AI coding agents: they start every session blind. Reading 500 files burns 150k+ tokens just to rebuild context — then the session ends and it's all lost. Knowledge graphs solve this permanently. Graphify (VS Code extension) generates a structural map of your codebase in seconds. That map persists as a file. Every future session — Claude, Copilot, Cursor — starts with full architectural awareness for ~2k tokens instead of 150k. Generate once → reuse forever → compound intelligence across sessions.`,
     blocks: [
       {

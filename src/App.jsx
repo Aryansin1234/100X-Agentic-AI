@@ -396,7 +396,7 @@ function TeachingSection({ section }) {
         <div className="teaching-intro">{section.intro}</div>
       )}
       {section.blocks && (
-        <div className="teaching-grid">
+        <div className={`teaching-grid${section.layout === 'vertical' ? ' teaching-grid--vertical' : ''}`}>
           {section.blocks.map((block, i) => (
             <div key={i} className={`teaching-block tb-${block.type}`}>
               <div className="tb-header">
