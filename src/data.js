@@ -38,11 +38,12 @@ export const NAV_ITEMS = [
   { id: `mcp`, num: `10`, label: `MCP + A2A Protocols` },
   { id: `git`, num: `11`, label: `Git Discipline` },
   { id: `tools`, num: `12`, label: `Tools & Stack` },
-  { id: `security`, num: `13`, label: `Security & Safety` },
-  { id: `antipatterns`, num: `14`, label: `Anti-Patterns` },
-  { id: `mindset`, num: `15`, label: `Mindset Shifts` },
-  { id: `hierarchy`, num: `16`, label: `Engineering Hierarchy` },
-  { id: `action`, num: `17`, label: `Action Plan` },
+  { id: `graphify`, num: `13`, label: `Graphify & Knowledge Graphs` },
+  { id: `security`, num: `14`, label: `Security & Safety` },
+  { id: `antipatterns`, num: `15`, label: `Anti-Patterns` },
+  { id: `mindset`, num: `16`, label: `Mindset Shifts` },
+  { id: `hierarchy`, num: `17`, label: `Engineering Hierarchy` },
+  { id: `action`, num: `18`, label: `Action Plan` },
 ]
 
 // ─────────────────────────────────────────────
@@ -1050,11 +1051,88 @@ Produce a Markdown table:
   },
 
   // ══════════════════════════════════════════
-  //  13 — SECURITY & SAFETY
+  //  13 — GRAPHIFY & KNOWLEDGE GRAPHS
+  // ══════════════════════════════════════════
+  {
+    id: `graphify`,
+    sectionNum: `13`,
+    title: `Graphify — Knowledge Graphs for AI Coding`,
+    subtitle: `Turn your codebase into a navigable architectural map that makes AI agents smarter`,
+    type: `teaching`,
+    intro: `Graphify is a VS Code extension that builds interactive knowledge graphs from your source code. Inspired by Andrej Karpathy's call for LLM-powered knowledge bases, it transforms scattered files into a semantic graph — connecting classes, functions, and modules into a visual, queryable architecture map. This gives both you and your AI coding assistants a dramatically better mental model of any codebase.`,
+    blocks: [
+      {
+        type: `what`, icon: `📘`, label: `What It Is`,
+        text: `Graphify is a VS Code extension (by Anytechie Studio) that performs deep AST-based structural extraction of your codebase and visualizes it as an interactive knowledge graph. Nodes represent files, classes, and functions; edges represent relationships like imports, inheritance, and function calls. It supports Python, JavaScript, TypeScript, Go, Rust, Java, C++, Ruby, PHP, and more.`,
+        bullets: [
+          `One-click analysis — right-click any folder to generate an instant architectural graph`,
+          `Deep AST extraction across 10+ languages (Python, JS, TS, Go, Rust, Java, C++, Ruby, PHP)`,
+          `Interactive vis.js dashboard — zoom, pan, filter, and click nodes to jump to source`,
+          `AI-ready intelligence — auto-detects "God Nodes" (high centrality) and "Surprising Connections"`,
+          `Resilient engine — handles massive repos with real-time progress reporting`,
+          `Install: VS Code Marketplace → "Graphify" by Anytechie Studio (requires Python 3.9+)`,
+        ],
+      },
+      {
+        type: `how`, icon: `⚙️`, label: `How to Use It`,
+        text: `Getting started takes 30 seconds: install the extension, right-click a folder, select "Build Knowledge Graph". The interactive visualizer opens automatically, revealing your project's real architecture — not what the docs say, but what the code actually does.`,
+        bullets: [
+          `Step 1: Install from VS Code Marketplace (search "Graphify") + pip install anytechie-graphify`,
+          `Step 2: Right-click any folder → "Graphify: Build Knowledge Graph"`,
+          `Step 3: Explore the interactive vis.js graph — click any node to jump to source code`,
+          `Step 4: Use Cmd+Shift+P → "Graphify: Open Interactive Visualizer" for saved reports`,
+          `Step 5: Feed the graph insights to your AI agents for architecture-aware coding`,
+          `Configure: Settings → graphify.pythonPath if using a virtual environment`,
+        ],
+      },
+      {
+        type: `why`, icon: `💡`, label: `Why It Improves Workflows`,
+        text: `AI coding agents are only as good as their context. Without understanding your codebase architecture, agents make locally correct but globally wrong decisions. Graphify solves this by giving agents (and you) a structural map of relationships — turning "I see this file" into "I understand how this system connects."`,
+        bullets: [
+          `10x faster onboarding — new team members see the full architecture in minutes, not weeks`,
+          `Smarter AI agents — feed graph output to Claude/Copilot for architecture-aware refactoring`,
+          `God Node detection — instantly find over-coupled classes that need decomposition`,
+          `Surprising Connections — discover hidden dependencies before they cause production issues`,
+          `Refactoring confidence — see blast radius of changes before making them`,
+          `Incident debugging — trace failures through actual dependency chains, not guesswork`,
+        ],
+      },
+      {
+        type: `key`, icon: `🔑`, label: `Workflow Integration`,
+        text: `The real power comes from combining Graphify with agentic tools. Generate the knowledge graph, share architectural insights in your CLAUDE.md or agent context, and let agents make decisions with full structural awareness. This is the difference between an agent that edits a file and one that understands a system.`,
+        bullets: [
+          `Add graph summaries (God Nodes, key modules) to your CLAUDE.md for persistent context`,
+          `Run Graphify before major refactors — share the graph with your agent fleet`,
+          `Use "Surprising Connections" output to write better test coverage strategies`,
+          `Combine with MCP: expose the knowledge graph as a queryable data source for agents`,
+          `Re-run after large changes to verify architecture integrity hasn't degraded`,
+          `Knowledge graphs + incident data = instant blast radius prediction (see Rootly integration)`,
+        ],
+      },
+    ],
+    callout: {
+      label: `The Context Multiplier`,
+      text: `Graphify doesn't replace your AI agents — it makes them dramatically smarter. An agent with a knowledge graph understands your architecture. An agent without one is guessing. The 30-second investment to generate a graph pays for itself on the first complex refactoring task.`,
+    },
+    pillars: [
+      {
+        id: `GR-01`, title: `Beyond code visualization`, tag: `Advanced Use Cases`, open: true,
+        rules: [
+          { color: `teal`, title: `Incident data as knowledge graphs`, desc: `Feed incident data (services, alerts, responders, timelines) into graph structures. Query relationships instead of logs — "What happened last time this service broke?" becomes an instant lookup, not Slack archaeology.` },
+          { color: `gold`, title: `Blast radius prediction`, desc: `If Service X goes down, the graph reveals co-failure patterns: Services Y and Z usually fail shortly after. Learned from real historical incident data, not documentation assumptions.` },
+          { color: `purple`, title: `Team load and burnout detection`, desc: `Connect incident volume, team ownership, and responder activity. The graph surfaces which teams absorb disproportionate load — making burnout visible in data before it becomes a crisis.` },
+          { color: `coral`, title: `Alert signal vs noise`, desc: `Rank alerts by which ones actually lead to real incidents. Graph-backed evidence for tuning or deleting noisy alerts. Stop alert fatigue with data, not intuition.` },
+        ],
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════
+  //  14 — SECURITY & SAFETY
   // ══════════════════════════════════════════
   {
     id: `security`,
-    sectionNum: `13`,
+    sectionNum: `14`,
     title: `Security & Safety in Agentic Systems`,
     subtitle: `Non-negotiable \u2014 the blast radius you don't see is the one that hurts`,
     type: `teaching`,
@@ -1130,11 +1208,11 @@ Produce a Markdown table:
   },
 
   // ══════════════════════════════════════════
-  //  14 — ANTI-PATTERNS
+  //  15 — ANTI-PATTERNS
   // ══════════════════════════════════════════
   {
     id: `antipatterns`,
-    sectionNum: `14`,
+    sectionNum: `15`,
     title: `10 Anti-Patterns That Kill Agentic Velocity`,
     subtitle: `Failure modes \u2014 recognise them before they compound into real damage`,
     type: `antipatterns`,
@@ -1157,11 +1235,11 @@ Produce a Markdown table:
   },
 
   // ══════════════════════════════════════════
-  //  15 — MINDSET SHIFTS
+  //  16 — MINDSET SHIFTS
   // ══════════════════════════════════════════
   {
     id: `mindset`,
-    sectionNum: `15`,
+    sectionNum: `16`,
     title: `Mindset Shifts That Unlock 100X`,
     subtitle: `Mental models \u2014 the questions that change everything`,
     type: `mindset`,
@@ -1176,11 +1254,11 @@ Produce a Markdown table:
   },
 
   // ══════════════════════════════════════════
-  //  16 — ENGINEERING HIERARCHY
+  //  17 — ENGINEERING HIERARCHY
   // ══════════════════════════════════════════
   {
     id: `hierarchy`,
-    sectionNum: `16`,
+    sectionNum: `17`,
     title: `The Engineering Hierarchy`,
     subtitle: `Where are you? Where are you going?`,
     type: `hierarchy`,
@@ -1197,11 +1275,11 @@ Produce a Markdown table:
   },
 
   // ══════════════════════════════════════════
-  //  17 — ACTION PLAN
+  //  18 — ACTION PLAN
   // ══════════════════════════════════════════
   {
     id: `action`,
-    sectionNum: `17`,
+    sectionNum: `18`,
     title: `Week 1 Action Plan`,
     subtitle: `Start here \u2014 one concrete task per day`,
     type: `action`,
