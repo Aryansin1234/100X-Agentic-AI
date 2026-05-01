@@ -463,7 +463,7 @@ function Section({ section }) {
 //  HEADER
 // ─────────────────────────────────────────────
 
-function Header({ sidebarOpen, setSidebarOpen }) {
+function Header({ sidebarOpen, setSidebarOpen, theme, toggleTheme }) {
   return (
     <header className="site-header">
       <a href="#" className="logo">{META.logoLabel}</a>
@@ -472,6 +472,14 @@ function Header({ sidebarOpen, setSidebarOpen }) {
         <span className="tag">Research-Based</span>
         <span className="tag">Battle-Tested</span>
       </div>
+      <button
+        className="theme-toggle"
+        onClick={toggleTheme}
+        aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+        title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+      >
+        {theme === 'dark' ? '☀️' : '🌙'}
+      </button>
       <button
         className={`hamburger${sidebarOpen ? ' active' : ''}`}
         onClick={() => setSidebarOpen(o => !o)}
@@ -554,6 +562,19 @@ export default function App() {
   const [backToTopVisible, setBackToTopVisible] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('fundamentals')
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    }
+    return 'light'
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark')
 
   const handleScroll = useCallback(() => {
     // Reading bar
@@ -613,7 +634,7 @@ export default function App() {
       <ReadingBar progress={readingProgress} />
       <BackToTop visible={backToTopVisible} />
 
-      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} theme={theme} toggleTheme={toggleTheme} />
       <Hero />
 
       <div className="page-grid">
