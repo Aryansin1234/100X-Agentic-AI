@@ -11,7 +11,6 @@ export const META = {
   eyebrow: `Complete Guide · Basics to Mastery`,
   heroSub:
     `A structured, teaching-style guide to agentic coding — from foundational concepts to advanced multi-agent orchestration. Synthesized from Anthropic's 2026 research, Boris Cherny's workflow, Addy Osmani's framework, and top community intelligence.`,
-  date: `April 2026`,
   footerNote: `April 2026 Edition · Teaching Guide\nSynthesized from Anthropic, Boris Cherny & Addy Osmani.\nShare freely. Build better systems.`,
   sidebarMeta:
     `Start from Section 00 if you're new to agentic coding. Each section builds on the previous — from "what is this?" to "how do I master it?"`,

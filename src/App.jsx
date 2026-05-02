@@ -467,11 +467,6 @@ function Header({ sidebarOpen, setSidebarOpen, theme, toggleTheme }) {
   return (
     <header className="site-header">
       <a href="#" className="logo">{META.logoLabel}</a>
-      <div className="nav-tags">
-        <span className="tag">{META.date}</span>
-        <span className="tag">Research-Based</span>
-        <span className="tag">Battle-Tested</span>
-      </div>
       <button
         className="theme-toggle"
         onClick={toggleTheme}
