@@ -17,10 +17,10 @@ export const META = {
 }
 
 export const HERO_STATS = [
-  { n: `252×`, label: `Faster than traditional workflows` },
-  { n: `90.2%`, label: `Higher success with multi-agent isolation` },
-  { n: `90%`, label: `Cost reduction via Plan-and-Execute` },
-  { n: `Top 2%`, label: `Engineers manage fleets, not prompts` },
+  { n: `55%`, label: `Faster task completion (GitHub study, n=95)` },
+  { n: `72–77%`, label: `Real bugs solved autonomously (SWE-bench Verified)` },
+  { n: `73%`, label: `Developers report staying in flow (2,000+ surveyed)` },
+  { n: `87%`, label: `Less mental effort on repetitive tasks` },
 ]
 
 export const NAV_ITEMS = [
@@ -86,11 +86,11 @@ export const SECTIONS = [
       },
       {
         type: `why`, icon: `💡`, label: `Why It Matters`,
-        text: `Top engineers using agentic workflows report 252\u00D7 faster task completion. The key insight: the top 2% aren't writing better prompts — they're designing better systems. Your role shifts from "person who writes code" to "person who designs systems that write code."`,
+        text: `GitHub's controlled study with 95 professional developers found 55% faster task completion with AI coding tools. The key insight: the best engineers aren't writing better prompts — they're designing better systems. Your role shifts from "person who writes code" to "person who designs systems that write code."`,
         bullets: [
-          `252\u00D7 faster than traditional coding workflows on complex tasks`,
+          `55% faster task completion in controlled studies (GitHub research, P=.0017)`,
           `One engineer can manage 10\u201315 parallel coding sessions simultaneously`,
-          `90.2% higher task success with multi-agent isolation vs single agent`,
+          `Multi-agent isolation significantly outperforms single-agent approaches`,
           `Every correction encoded in config compounds into permanent productivity gains`,
           `The skill ceiling is system design quality, not typing speed`,
         ],
@@ -307,9 +307,9 @@ cd my-project && claude
       },
       {
         type: `why`, icon: `💡`, label: `Why It Matters`,
-        text: `Multi-agent isolation delivers 90.2% higher task success vs single-agent. The token cost is 15\u00D7 higher but the accuracy gain justifies it for any non-trivial work. Strong engineers get MORE leverage — precise specs multiply into precise implementations everywhere.`,
+        text: `Multi-agent isolation significantly outperforms single-agent approaches — isolated specialist agents avoid context pollution and produce higher-quality output. The token cost is higher but the accuracy gain justifies it for any non-trivial work. Strong engineers get MORE leverage — precise specs multiply into precise implementations everywhere.`,
         bullets: [
-          `90.2% higher success rate with isolated specialist agents`,
+          `Isolated specialist agents dramatically outperform overloaded generalists`,
           `Enables 10\u201315 parallel coding sessions per engineer`,
           `Context isolation prevents one task from polluting another`,
           `Your value shifts from typing speed to specification quality`,
@@ -369,7 +369,7 @@ cd my-project && claude
       },
       {
         type: `how`, icon: `⚙️`, label: `How It Works`,
-        text: `Think of the context window as scarce memory in a performance-critical system. Budget it: 5% for constraints, 35% for task context, 40% for project patterns, 20% for background knowledge. Semantic tool selection delivers 3\u00D7 better accuracy vs providing all tools.`,
+        text: `Think of the context window as scarce memory in a performance-critical system. Budget it: 5% for constraints, 35% for task context, 40% for project patterns, 20% for background knowledge. Focused tool selection dramatically improves accuracy vs providing all tools at once.`,
         bullets: [
           `Priority 1 (5%) — security policies, type definitions, business rules`,
           `Priority 2 (35%) — current files, imports, tests, requirements`,
@@ -380,10 +380,10 @@ cd my-project && claude
       },
       {
         type: `why`, icon: `💡`, label: `Why It Matters`,
-        text: `Karpathy: "Context engineering is the delicate art of filling the context window with just the right information for the next step." Semantic selection = 3\u00D7 accuracy. Multi-agent isolation = 90.2% higher success. Context is everything.`,
+        text: `Karpathy: "Context engineering is the delicate art of filling the context window with just the right information for the next step." Focused tool selection dramatically improves accuracy. Multi-agent isolation prevents context pollution. Context is everything.`,
         bullets: [
-          `Semantic selection = 3\u00D7 accuracy vs giving all tools at once`,
-          `Multi-agent isolation = 90.2% higher task success`,
+          `Focused tool selection dramatically improves accuracy vs dumping all tools`,
+          `Multi-agent isolation prevents context pollution between tasks`,
           `Every correction written to CLAUDE.md compounds indefinitely`,
           `/clear between tasks = treating sessions like git branches`,
           `Fresh, focused context outperforms stale, bloated context every time`,
@@ -394,10 +394,10 @@ cd my-project && claude
       {
         id: `CE-01`, title: `The 4 operations in detail`, tag: `Foundation`,
         rules: [
-          { color: `teal`, title: `SELECT — only pull what's needed`, desc: `Use RAG, AST parsing, grep, and semantic similarity to inject relevant code and docs. The context window is scarce — treat it like memory in a performance-critical system.`, tip: `Semantic tool selection = 3\u00D7 better accuracy vs giving Claude all tools at once` },
+          { color: `teal`, title: `SELECT — only pull what's needed`, desc: `Use RAG, AST parsing, grep, and semantic similarity to inject relevant code and docs. The context window is scarce — treat it like memory in a performance-critical system.`, tip: `Focused tool selection dramatically improves accuracy vs giving Claude all tools at once` },
           { color: `gold`, title: `WRITE — persist knowledge across sessions`, desc: `Use scratchpads, tasks/lessons.md, and CLAUDE.md. Boris Cherny's rule: "Anytime Claude does something incorrectly, add it to CLAUDE.md so it never repeats."` },
           { color: `purple`, title: `COMPRESS — compact at 70% context usage`, desc: `Don't wait for auto-compact. Use /clear between unrelated tasks. Fresh context produces measurably better output.`, tip: `/clear between unrelated tasks — treat sessions like git branches` },
-          { color: `coral`, title: `ISOLATE — each agent gets its own context`, desc: `Multi-agent isolation delivers 90.2% higher task success vs single-agent. The cost is 15\u00D7 tokens but the accuracy gain justifies it.`, tip: `Isolation = 90.2% higher success (15\u00D7 tokens — worth every one)` },
+          { color: `coral`, title: `ISOLATE — each agent gets its own context`, desc: `Multi-agent isolation significantly outperforms single-agent approaches. The cost is more tokens but the accuracy gain justifies it for non-trivial work.`, tip: `Isolation prevents context pollution — each agent stays focused on its task` },
         ],
       },
       {
@@ -717,7 +717,7 @@ You are a test engineering specialist.
         displayPath: `.claude/commands/ \u2014 Skills`,
         icon: `\u26A1`,
         color: `coral`,
-        what: `Markdown files in .claude/commands/ \u2014 these are your "skills". Each file is a reusable slash command invoked with /project:<name>. Think of them as your team's CLI for recurring workflows: code review, PR prep, refactoring, security scans. Teams with 5+ documented skills onboard 25% faster.`,
+        what: `Markdown files in .claude/commands/ \u2014 these are your "skills". Each file is a reusable slash command invoked with /project:<name>. Think of them as your team's CLI for recurring workflows: code review, PR prep, refactoring, security scans. Teams with documented skills onboard new members significantly faster.`,
         howToUse: [
           `Create a .md file in .claude/commands/ \u2014 the filename becomes the skill name`,
           `Write the instructions as plain text (no YAML frontmatter needed)`,
@@ -776,9 +776,9 @@ Produce a Markdown table:
       {
         id: `CM-02`, title: `Slash commands & automation`, tag: `Workflows`,
         rules: [
-          { color: `teal`, title: `Teams with 5+ documented workflows onboard 25% faster`, desc: `Each custom command pays for itself from the second use. Build commands for: code review, PR prep, test generation, refactoring, documentation, dependency audits.` },
+          { color: `teal`, title: `Teams with documented workflows onboard significantly faster`, desc: `Each custom command pays for itself from the second use. Build commands for: code review, PR prep, test generation, refactoring, documentation, dependency audits.` },
           { color: `gold`, title: `Use /loop and /schedule for recurring tasks`, desc: `/loop runs monitoring tasks locally for up to 3 days. /schedule runs cloud-based recurring tasks even when your machine is off.` },
-          { color: `purple`, title: `Permission levels per environment`, desc: `Local dev = permissive. CI/CD = restricted to read + test + lint. Code review = read-only. Configure once in global CLAUDE.md, adjust per project.`, tip: `/sandbox reduces permission prompts by 84%` },
+          { color: `purple`, title: `Permission levels per environment`, desc: `Local dev = permissive. CI/CD = restricted to read + test + lint. Code review = read-only. Configure once in global CLAUDE.md, adjust per project.`, tip: `/sandbox significantly reduces permission prompts` },
         ],
       },
     ],
@@ -849,14 +849,14 @@ Produce a Markdown table:
         text: `Four topologies for coordinating agents: Pipeline (sequential stages), Orchestrator-Worker (parallel delegation), Router (classify and dispatch), and Plan-and-Execute (strategy + execution split). Each has optimal use cases.`,
         bullets: [
           `Pipeline \u2014 sequential stages, highest accuracy`,
-          `Orchestrator-Worker \u2014 parallel execution, 90.2% higher success`,
+          `Orchestrator-Worker \u2014 parallel execution, significantly higher success`,
           `Router \u2014 classify and dispatch to specialists`,
           `Plan-and-Execute \u2014 frontier model plans, cheaper model executes`,
         ],
       },
       {
         type: `how`, icon: `⚙️`, label: `How To Choose`,
-        text: `Use Pipeline when correctness matters more than speed. Use Orchestrator-Worker for parallel codebases. Use Router when requests have clear categories. Use Plan-and-Execute when cost matters \u2014 90% cost reduction via model tiering.`,
+        text: `Use Pipeline when correctness matters more than speed. Use Orchestrator-Worker for parallel codebases. Use Router when requests have clear categories. Use Plan-and-Execute when cost matters — significant cost reduction via model tiering.`,
         bullets: [
           `Pipeline: Research \u2192 Draft \u2192 Review (content, doc processing)`,
           `Orchestrator: 1 coordinator + N workers (codebases with clear modules)`,
@@ -868,8 +868,8 @@ Produce a Markdown table:
         type: `why`, icon: `💡`, label: `Why It Matters`,
         text: `Wrong topology = wasted tokens and poor results. The merge rule: if two agents spend 80% time on similar tasks \u2192 merge them. If one agent's context is polluted by unrelated work \u2192 split it.`,
         bullets: [
-          `Orchestrator-Worker = 90.2% higher success than single agent`,
-          `Plan-and-Execute = 90% cost reduction via model tiering`,
+          `Orchestrator-Worker significantly outperforms single-agent on complex tasks`,
+          `Plan-and-Execute = major cost reduction via model tiering`,
           `Start small: 1 orchestrator + 1 worker. Add agents with evidence only`,
           `The merge/split rule keeps your system lean and efficient`,
         ],
@@ -880,9 +880,9 @@ Produce a Markdown table:
         id: `OP-01`, title: `All 4 patterns explained`, tag: `Architecture`,
         rules: [
           { color: `teal`, title: `1. Pipeline \u2014 sequential stages, highest accuracy`, desc: `Research agent \u2192 Draft agent \u2192 Review agent. Each output becomes the next input. Best when correctness matters more than speed.` },
-          { color: `gold`, title: `2. Orchestrator-Worker \u2014 parallel, 90.2% higher success`, desc: `One orchestrator decomposes and delegates to specialist workers in parallel, then synthesizes. Best for codebases with clear module boundaries.`, tip: `Start small: 1 orchestrator + 1 worker. Add agents only with evidence.` },
+          { color: `gold`, title: `2. Orchestrator-Worker \u2014 parallel, significantly higher success`, desc: `One orchestrator decomposes and delegates to specialist workers in parallel, then synthesizes. Best for codebases with clear module boundaries.`, tip: `Start small: 1 orchestrator + 1 worker. Add agents only with evidence.` },
           { color: `purple`, title: `3. Router \u2014 classify and dispatch`, desc: `A triage agent classifies the request type and routes to the specialist: Bug \u2192 Debug agent, Feature \u2192 Arch agent. Keeps each specialist's context clean.` },
-          { color: `coral`, title: `4. Plan-and-Execute \u2014 90% cost reduction`, desc: `Frontier model (Opus) creates the strategy. Cheaper model (Haiku) executes the steps. Model tiering is now a standard architectural decision.` },
+          { color: `coral`, title: `4. Plan-and-Execute \u2014 major cost reduction`, desc: `Frontier model (Opus) creates the strategy. Cheaper model (Haiku) executes the steps. Model tiering is now a standard architectural decision.` },
         ],
       },
     ],
@@ -911,11 +911,11 @@ Produce a Markdown table:
       },
       {
         type: `how`, icon: `⚙️`, label: `How They Work`,
-        text: `Configure MCP servers in .claude/settings.json. Each server provides tools (read DB, call API, manage files). Set lazy_load with triggers to save 78% startup cost. For A2A, agents advertise capabilities and discover each other automatically.`,
+        text: `Configure MCP servers in .claude/settings.json. Each server provides tools (read DB, call API, manage files). Set lazy_load with triggers to dramatically reduce startup cost. For A2A, agents advertise capabilities and discover each other automatically.`,
         bullets: [
           `Configure in .claude/settings.json under "mcpServers"`,
           `Set read_only: true for all production data sources`,
-          `Use lazy_load with triggers to save 78% startup costs`,
+          `Use lazy_load with triggers to reduce startup overhead significantly`,
           `Block sensitive patterns (*.env, *.key, */secrets/*) at config level`,
           `Circuit breaker: error rate > 1% = automatic halt`,
         ],
@@ -926,7 +926,7 @@ Produce a Markdown table:
         bullets: [
           `MCP = standardized tool connectivity (no more custom integrations)`,
           `A2A = cross-vendor agent collaboration (composable systems)`,
-          `78% startup savings with lazy MCP loading`,
+          `Major startup savings with lazy MCP loading`,
           `Security at the config level, not as a prompt-time reminder`,
         ],
       },
@@ -990,7 +990,7 @@ Produce a Markdown table:
       },
       {
         type: `how`, icon: `⚙️`, label: `How It Works`,
-        text: `Create a worktree for each task, launch Claude in it, let the agent work independently. When done, review the diff, squash merge to main, delete the worktree. The Anthropic team's median PR: 118 lines across 141 PRs.`,
+        text: `Create a worktree for each task, launch Claude in it, let the agent work independently. When done, review the diff, squash merge to main, delete the worktree. Keep PRs small and focused — atomic changes are easier to review and revert.`,
         bullets: [
           `git worktree add ../feature-x && cd ../feature-x && claude`,
           `Agent works in isolated worktree \u2014 no interference with others`,
@@ -1282,9 +1282,9 @@ Result: 150,000 tokens → 2,000 tokens (98.7% compression)
         id: `GR-02`, title: `Advanced patterns — beyond single repos`, tag: `Power User`,
         rules: [
           { color: `teal`, title: `Incident data as knowledge graphs`, desc: `Feed incident data (services, alerts, responders, timelines) into graph structures. "What happened last time this service broke?" becomes an instant graph lookup — not 30 minutes of Slack archaeology. See Rootly-Graphify integration.` },
-          { color: `gold`, title: `Blast radius prediction from historical data`, desc: `The graph learns co-failure patterns: when Service X goes down, Services Y and Z follow 73% of the time. This is learned from real incident history, not documentation. During incidents, the graph tells you what WILL break next.` },
+          { color: `gold`, title: `Blast radius prediction from historical data`, desc: `The graph learns co-failure patterns: when Service X goes down, which other services tend to follow? This is learned from real incident history, not documentation. During incidents, the graph tells you what's likely to break next.` },
           { color: `purple`, title: `Architecture drift detection`, desc: `Generate graphs weekly. Diff them. If coupling scores increase or new God Nodes appear, you've caught architecture degradation BEFORE it becomes a crisis. Automate this in CI: "graph coupling score > 0.8 = block merge."` },
-          { color: `coral`, title: `Onboarding acceleration (measured: 10x)`, desc: `New engineer joins. Instead of 2 weeks reading code: open the graph visualizer, spend 30 minutes exploring the interactive map, understand the full system. Teams report 10x faster productive contribution from new hires with graph-based onboarding.` },
+          { color: `coral`, title: `Onboarding acceleration`, desc: `New engineer joins. Instead of 2 weeks reading code: open the graph visualizer, spend 30 minutes exploring the interactive map, understand the full system. Graph-based onboarding dramatically accelerates time-to-productivity for new hires.` },
         ],
         code: {
           label: `CI integration — automated architecture health checks`,
