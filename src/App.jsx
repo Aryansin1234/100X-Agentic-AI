@@ -536,34 +536,60 @@ const STAT_ICON_MAP = { TrendingUp, ShieldCheck, Activity, BrainCircuit }
 function Hero() {
   return (
     <section className="hero">
-      <div className="hero-eyebrow">{META.eyebrow}</div>
-      <h1>100X Agentic<br /><em>Engineering</em></h1>
-      <p className="hero-sub">{META.heroSub}</p>
+      {/* Animated background orbs */}
+      <div className="hero-orb hero-orb--1" aria-hidden="true" />
+      <div className="hero-orb hero-orb--2" aria-hidden="true" />
+      <div className="hero-orb hero-orb--3" aria-hidden="true" />
+      {/* Dot-grid texture */}
+      <div className="hero-grid" aria-hidden="true" />
 
-      <div className="hero-sources">
-        <span className="hero-sources-label">Synthesized from</span>
-        <div className="hero-source-pill"><BookOpen size={12} strokeWidth={2} />Anthropic Research</div>
-        <div className="hero-source-pill"><Code2 size={12} strokeWidth={2} />Boris Cherny</div>
-        <div className="hero-source-pill"><Layers size={12} strokeWidth={2} />Addy Osmani</div>
-        <div className="hero-source-pill"><Users size={12} strokeWidth={2} />Community Intel</div>
+      <div className="hero-inner">
+        {/* Badge */}
+        <div className="hero-badge hero-anim hero-anim--1">
+          <span className="hero-badge-dot" />
+          April 2026 Edition
+        </div>
+
+        {/* Eyebrow */}
+        <div className="hero-eyebrow hero-anim hero-anim--2">{META.eyebrow}</div>
+
+        {/* Headline */}
+        <h1 className="hero-anim hero-anim--3">
+          100X Agentic<br /><em>Engineering</em>
+        </h1>
+
+        {/* Sub */}
+        <p className="hero-sub hero-anim hero-anim--4">{META.heroSub}</p>
+
+        {/* Source pills */}
+        <div className="hero-sources hero-anim hero-anim--5">
+          <span className="hero-sources-label">Synthesized from</span>
+          <div className="hero-source-pill"><BookOpen size={12} strokeWidth={2} />Anthropic Research</div>
+          <div className="hero-source-pill"><Code2 size={12} strokeWidth={2} />Boris Cherny</div>
+          <div className="hero-source-pill"><Layers size={12} strokeWidth={2} />Addy Osmani</div>
+          <div className="hero-source-pill"><Users size={12} strokeWidth={2} />Community Intel</div>
+        </div>
+
+        {/* Stats */}
+        <div className="stats-row hero-anim hero-anim--6">
+          {HERO_STATS.map((s, i) => {
+            const Icon = STAT_ICON_MAP[s.icon]
+            return (
+              <div key={i} className="stat-item" style={{ '--i': i }}>
+                {Icon && <div className="stat-icon"><Icon size={20} strokeWidth={1.5} /></div>}
+                <span className="stat-n">{s.n}</span>
+                <span className="stat-l">{s.label}</span>
+              </div>
+            )
+          })}
+        </div>
+
+        {/* CTA */}
+        <a className="hero-cta hero-anim hero-anim--7" href="#agentic-coding">
+          <span>Explore the guide</span>
+          <span className="hero-cta-arrow"><ArrowDown size={15} strokeWidth={2.5} /></span>
+        </a>
       </div>
-
-      <div className="stats-row">
-        {HERO_STATS.map((s, i) => {
-          const Icon = STAT_ICON_MAP[s.icon]
-          return (
-            <div key={i} className="stat-item">
-              {Icon && <div className="stat-icon"><Icon size={20} strokeWidth={1.5} /></div>}
-              <span className="stat-n">{s.n}</span>
-              <span className="stat-l">{s.label}</span>
-            </div>
-          )
-        })}
-      </div>
-
-      <a className="hero-cta" href="#agentic-coding">
-        Explore the guide <ArrowDown size={14} strokeWidth={2} />
-      </a>
     </section>
   )
 }
