@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { META, HERO_STATS, NAV_ITEMS, SECTIONS } from './data.js'
-import { TrendingUp, ShieldCheck, Activity, BrainCircuit, BookOpen, Code2, Layers, Users, ArrowDown } from 'lucide-react'
+import { TrendingUp, ShieldCheck, Activity, BrainCircuit, BookOpen, Code2, Layers, Users, ArrowDown, Sun, Moon } from 'lucide-react'
 
 // ─────────────────────────────────────────────
 //  SMALL ATOMS
@@ -474,7 +474,7 @@ function Header({ sidebarOpen, setSidebarOpen, theme, toggleTheme }) {
         aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
         title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
       >
-        {theme === 'dark' ? '☀️' : '🌙'}
+        {theme === 'dark' ? <Sun size={16} strokeWidth={2} /> : <Moon size={16} strokeWidth={2} />}
       </button>
       <button
         className={`hamburger${sidebarOpen ? ' active' : ''}`}
