@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { META, HERO_STATS, NAV_ITEMS, SECTIONS } from './data.js'
+import { TrendingUp, ShieldCheck, Activity, BrainCircuit, BookOpen, Code2, Layers, Users, ArrowDown } from 'lucide-react'
 
 // ─────────────────────────────────────────────
 //  SMALL ATOMS
@@ -530,20 +531,39 @@ function Sidebar({ activeSection, sidebarOpen, setSidebarOpen }) {
 //  HERO
 // ─────────────────────────────────────────────
 
+const STAT_ICON_MAP = { TrendingUp, ShieldCheck, Activity, BrainCircuit }
+
 function Hero() {
   return (
     <section className="hero">
       <div className="hero-eyebrow">{META.eyebrow}</div>
       <h1>100X Agentic<br /><em>Engineering</em></h1>
       <p className="hero-sub">{META.heroSub}</p>
-      <div className="stats-row">
-        {HERO_STATS.map((s, i) => (
-          <div key={i} className="stat-item">
-            <span className="stat-n">{s.n}</span>
-            <span className="stat-l">{s.label}</span>
-          </div>
-        ))}
+
+      <div className="hero-sources">
+        <span className="hero-sources-label">Synthesized from</span>
+        <div className="hero-source-pill"><BookOpen size={12} strokeWidth={2} />Anthropic Research</div>
+        <div className="hero-source-pill"><Code2 size={12} strokeWidth={2} />Boris Cherny</div>
+        <div className="hero-source-pill"><Layers size={12} strokeWidth={2} />Addy Osmani</div>
+        <div className="hero-source-pill"><Users size={12} strokeWidth={2} />Community Intel</div>
       </div>
+
+      <div className="stats-row">
+        {HERO_STATS.map((s, i) => {
+          const Icon = STAT_ICON_MAP[s.icon]
+          return (
+            <div key={i} className="stat-item">
+              {Icon && <div className="stat-icon"><Icon size={20} strokeWidth={1.5} /></div>}
+              <span className="stat-n">{s.n}</span>
+              <span className="stat-l">{s.label}</span>
+            </div>
+          )
+        })}
+      </div>
+
+      <a className="hero-cta" href="#agentic-coding">
+        Explore the guide <ArrowDown size={14} strokeWidth={2} />
+      </a>
     </section>
   )
 }

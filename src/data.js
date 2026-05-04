@@ -17,10 +17,10 @@ export const META = {
 }
 
 export const HERO_STATS = [
-  { n: `55%`, label: `Faster task completion (GitHub study, n=95)` },
-  { n: `72–77%`, label: `Real bugs solved autonomously (SWE-bench Verified)` },
-  { n: `73%`, label: `Developers report staying in flow (2,000+ surveyed)` },
-  { n: `87%`, label: `Less mental effort on repetitive tasks` },
+  { icon: `TrendingUp`,  n: `55%`,    label: `Faster task completion (GitHub study, n=95)` },
+  { icon: `ShieldCheck`, n: `72–77%`, label: `Real bugs solved autonomously (SWE-bench Verified)` },
+  { icon: `Activity`,    n: `73%`,    label: `Developers report staying in flow (2,000+ surveyed)` },
+  { icon: `BrainCircuit`,n: `87%`,    label: `Less mental effort on repetitive tasks` },
 ]
 
 export const NAV_ITEMS = [
