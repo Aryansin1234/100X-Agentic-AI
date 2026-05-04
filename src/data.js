@@ -1074,44 +1074,45 @@ Produce a Markdown table:
         ],
         code: {
           label: `What Graphify produces — your codebase as a graph`,
-          content: `┌─────────────────────────────────────────────────────────┐
-│              YOUR CODEBASE (500 files)                   │
-│                                                         │
-│  src/auth/           src/api/          src/db/          │
-│  ├── jwt.ts          ├── routes.ts     ├── pool.ts     │
-│  ├── middleware.ts   ├── validators.ts ├── models.ts   │
-│  ├── roles.ts        ├── handlers.ts   ├── migrate.ts  │
-│  └── session.ts      └── errors.ts     └── seeds.ts    │
-│                                                         │
-│  Reading all files = ~150,000 tokens (75% of context)   │
-└─────────────────────────────────────────────────────────┘
-                         │
-                    Graphify AST
-                     Extraction
-                         │
-                         ▼
-┌─────────────────────────────────────────────────────────┐
-│           KNOWLEDGE GRAPH OUTPUT (~2,000 tokens)        │
-│                                                         │
-│  ⚠️  GOD NODES (high coupling — refactor candidates):  │
-│      → AuthMiddleware (14 inbound connections)          │
-│      → DatabasePool (11 inbound connections)            │
-│                                                         │
-│  🔗 KEY RELATIONSHIPS:                                  │
-│      routes.ts → validators.ts → handlers.ts → db/     │
-│      middleware.ts → jwt.ts → session.ts → roles.ts    │
-│      ALL api/ handlers → DatabasePool (single point)   │
-│                                                         │
-│  ⚡ SURPRISING CONNECTIONS:                             │
-│      seeds.ts → jwt.ts (why does seeding need auth?)   │
-│      errors.ts → models.ts (circular risk)             │
-│                                                         │
-│  📊 MODULES: auth(4) → api(4) → db(4)                 │
-│     Coupling score: 0.73 (moderate — watch auth/)      │
-└─────────────────────────────────────────────────────────┘
+          content: `┌────────────────────────────────────────────────────────────┐
+│  YOUR CODEBASE (500+ files)  —  raw reading ~150k tokens   │
+│                                                            │
+│  src/auth/           src/api/            src/db/           │
+│  ├─ jwt.ts           ├─ routes.ts        ├─ pool.ts        │
+│  ├─ middleware.ts    ├─ validators.ts    ├─ models.ts      │
+│  ├─ roles.ts         ├─ handlers.ts      ├─ migrate.ts     │
+│  └─ session.ts       └─ errors.ts        └─ seeds.ts       │
+│                                                            │
+│  Reading ALL = ~150,000 tokens  (75% of 200k context)      │
+└────────────────────────────────────────────────────────────┘
+                              │
+               ┌──────────────┴──────────────┐
+               │    Graphify AST Extraction   │
+               └──────────────┬──────────────┘
+                              │
+                              ▼
+┌────────────────────────────────────────────────────────────┐
+│  KNOWLEDGE GRAPH OUTPUT  (~2,000 tokens, persistent)       │
+│                                                            │
+│  [!] GOD NODES  (high coupling — refactor candidates)      │
+│      AuthMiddleware  <-- 14 inbound connections            │
+│      DatabasePool    <-- 11 inbound connections            │
+│                                                            │
+│  [>] KEY RELATIONSHIPS                                     │
+│      routes.ts -> validators -> handlers -> db/            │
+│      middleware.ts -> jwt.ts -> session.ts -> roles.ts     │
+│      ALL api/ handlers -> DatabasePool  (single point)     │
+│                                                            │
+│  [?] SURPRISING CONNECTIONS                                │
+│      seeds.ts -> jwt.ts  (why does seeding need auth?)     │
+│      errors.ts <-> models.ts  (circular risk)              │
+│                                                            │
+│  [i] MODULES: auth(4) -> api(4) -> db(4)                   │
+│      Coupling score: 0.73  (moderate — watch auth/)        │
+└────────────────────────────────────────────────────────────┘
 
-Result: 150,000 tokens → 2,000 tokens (98.7% compression)
-        Persists across ALL future sessions forever`,
+  150,000 tokens  ->  2,000 tokens  =  98.7% compression
+  Persists across ALL future sessions  (generate once, reuse forever)`,
         },
       },
       {
@@ -1168,44 +1169,46 @@ Result: 150,000 tokens → 2,000 tokens (98.7% compression)
         ],
         code: {
           label: `Token economics — before vs after knowledge graph`,
-          content: `┌─────────────────────────────────────────────────────────────┐
-│  WITHOUT KNOWLEDGE GRAPH (every session)                    │
-├─────────────────────────────────────────────────────────────┤
-│  Action                          │ Tokens   │ % of 200k    │
-│  ─────────────────────────────── │ ──────── │ ──────────   │
-│  Read project structure          │  5,000   │   2.5%       │
-│  Read core source files          │ 80,000   │  40.0%       │
-│  Read related test files         │ 40,000   │  20.0%       │
-│  Read config/types/schemas       │ 25,000   │  12.5%       │
-│  ─────────────────────────────── │ ──────── │ ──────────   │
-│  TOTAL CONTEXT BURNED            │ 150,000  │  75.0% ❌    │
-│  Remaining for actual work       │  50,000  │  25.0%       │
-│                                                             │
-│  ⚠️  And this repeats EVERY new session!                   │
-│  ⚠️  Agent still misses cross-file relationships           │
-└─────────────────────────────────────────────────────────────┘
+          content: `┌────────────────────────────────────────────────────────┐
+│  WITHOUT KNOWLEDGE GRAPH  (every new session)          │
+├────────────────────────────────────────────────────────┤
+│  Action                          │   Tokens│  % of 200k│
+├──────────────────────────────────┼─────────┼───────────┤
+│  Read project structure          │    5,000│       2.5%│
+│  Read core source files          │   80,000│      40.0%│
+│  Read related test files         │   40,000│      20.0%│
+│  Read config / types / schemas   │   25,000│      12.5%│
+├──────────────────────────────────┼─────────┼───────────┤
+│  TOTAL CONTEXT BURNED            │  150,000│  75.0% [X]│
+│  Remaining for actual work       │   50,000│      25.0%│
+├────────────────────────────────────────────────────────┤
+│  [!] Repeats EVERY new session — agent starts blind    │
+│  [!] Agent still misses cross-file relationships       │
+└────────────────────────────────────────────────────────┘
 
-┌─────────────────────────────────────────────────────────────┐
-│  WITH KNOWLEDGE GRAPH (every session)                       │
-├─────────────────────────────────────────────────────────────┤
-│  Action                          │ Tokens   │ % of 200k    │
-│  ─────────────────────────────── │ ──────── │ ──────────   │
-│  Load graph summary (CLAUDE.md)  │  2,000   │   1.0%       │
-│  Read only the specific files    │ 15,000   │   7.5%       │
-│  needed for current task         │          │              │
-│  ─────────────────────────────── │ ──────── │ ──────────   │
-│  TOTAL CONTEXT BURNED            │  17,000  │   8.5% ✅    │
-│  Remaining for actual work       │ 183,000  │  91.5%       │
-│                                                             │
-│  ✅ Graph persists — never regenerated unless arch changes  │
-│  ✅ Agent knows ALL relationships from day one              │
-│  ✅ 10× more context available for actual coding            │
-└─────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────┐
+│  WITH KNOWLEDGE GRAPH  (every new session)             │
+├────────────────────────────────────────────────────────┤
+│  Action                          │   Tokens│  % of 200k│
+├──────────────────────────────────┼─────────┼───────────┤
+│  Load graph summary (CLAUDE.md)  │    2,000│       1.0%│
+│  Read only task-relevant files   │   15,000│       7.5%│
+├──────────────────────────────────┼─────────┼───────────┤
+│  TOTAL CONTEXT BURNED            │   17,000│  8.5% [OK]│
+│  Remaining for actual work       │  183,000│      91.5%│
+├────────────────────────────────────────────────────────┤
+│  [OK] Graph persists — regen only when arch changes    │
+│  [OK] Agent knows ALL relationships from session one   │
+│  [OK] 10x more context available for actual coding     │
+└────────────────────────────────────────────────────────┘
 
-│ Session 1 │ Session 2 │ Session 3 │ Session 4 │ ...
-│ Generate  │  Reuse    │  Reuse    │  Reuse    │ FREE
-│  graph    │  graph    │  graph    │  graph    │ FOREVER
-│ (30 sec)  │ (0 sec)   │ (0 sec)   │ (0 sec)   │`,
+┌───────────┬───────────┬───────────┬───────────┬──────────┐
+│ Session 1 │ Session 2 │ Session 3 │ Session 4 │   ...    │
+├───────────┼───────────┼───────────┼───────────┼──────────┤
+│  Generate │   Reuse   │   Reuse   │   Reuse   │   FREE   │
+│   graph   │   graph   │   graph   │   graph   │ FOREVER  │
+│  (30 sec) │  (0 sec)  │  (0 sec)  │  (0 sec)  │          │
+└───────────┴───────────┴───────────┴───────────┴──────────┘`,
         },
       },
       {
