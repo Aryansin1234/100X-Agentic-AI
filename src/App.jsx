@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { META, HERO_STATS, NAV_ITEMS, SECTIONS } from './data.js'
 import { TrendingUp, ShieldCheck, Activity, BrainCircuit, BookOpen, Code2, Layers, Users, ArrowDown, Sun, Moon } from 'lucide-react'
 
@@ -533,6 +533,84 @@ function Sidebar({ activeSection, sidebarOpen, setSidebarOpen }) {
 
 const STAT_ICON_MAP = { TrendingUp, ShieldCheck, Activity, BrainCircuit }
 
+// Parses "72–77%" → prefix="72–", target=77, suffix="%"
+// Parses "55%"   → prefix="",    target=55, suffix="%"
+function StatNumber({ value, onDone }) {
+  const [count, setCount] = useState(0)
+  const [done, setDone] = useState(false)
+  const ref = useRef(null)
+  const rafRef = useRef(null)
+  const startedRef = useRef(false)
+
+  const parsed = value.match(/^(.*?)(\d+)([^0-9]*)$/)
+  const prefix = parsed ? parsed[1] : ''
+  const target = parsed ? parseInt(parsed[2], 10) : 0
+  const suffix = parsed ? parsed[3] : ''
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !startedRef.current) {
+          startedRef.current = true
+          const duration = 1600
+          const startTime = performance.now()
+          const animate = (now) => {
+            const progress = Math.min((now - startTime) / duration, 1)
+            const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
+            setCount(Math.round(eased * target))
+            if (progress < 1) {
+              rafRef.current = requestAnimationFrame(animate)
+            } else {
+              setDone(true)
+              if (onDone) onDone()
+            }
+          }
+          rafRef.current = requestAnimationFrame(animate)
+        }
+      },
+      { threshold: 0.4 }
+    )
+    observer.observe(el)
+    return () => {
+      observer.disconnect()
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    }
+  }, [target, onDone])
+
+  return (
+    <span ref={ref} className={`stat-n${done ? ' stat-n--done' : ''}`}>
+      {prefix}{count}{suffix}
+    </span>
+  )
+}
+
+function StatCard({ s, i }) {
+  const [barWidth, setBarWidth] = useState(0)
+  const parsed = s.n.match(/^(.*?)(\d+)([^0-9]*)$/)
+  const target = parsed ? parseInt(parsed[2], 10) : 0
+  const Icon = STAT_ICON_MAP[s.icon]
+
+  const handleDone = useCallback(() => {
+    setBarWidth(target)
+  }, [target])
+
+  return (
+    <div className="stat-item" style={{ '--i': i }}>
+      {Icon && <div className="stat-icon"><Icon size={16} strokeWidth={1.8} /></div>}
+      <StatNumber value={s.n} onDone={handleDone} />
+      <div className="stat-bar-track">
+        <div
+          className="stat-bar-fill"
+          style={{ width: `${barWidth}%`, transitionDelay: '0.1s' }}
+        />
+      </div>
+      <span className="stat-l">{s.label}</span>
+    </div>
+  )
+}
+
 function Hero() {
   return (
     <section className="hero">
@@ -544,51 +622,49 @@ function Hero() {
       <div className="hero-grid" aria-hidden="true" />
 
       <div className="hero-inner">
-        {/* Badge */}
-        <div className="hero-badge hero-anim hero-anim--1">
-          <span className="hero-badge-dot" />
-          April 2026 Edition
+        {/* LEFT column */}
+        <div className="hero-left">
+          {/* Badge */}
+          <div className="hero-badge hero-anim hero-anim--1">
+            <span className="hero-badge-dot" />
+            April 2026 Edition
+          </div>
+
+          {/* Eyebrow */}
+          <div className="hero-eyebrow hero-anim hero-anim--2">{META.eyebrow}</div>
+
+          {/* Headline */}
+          <h1 className="hero-anim hero-anim--3">
+            100X Agentic<br /><em>Engineering</em>
+          </h1>
+
+          {/* Sub */}
+          <p className="hero-sub hero-anim hero-anim--4">{META.heroSub}</p>
+
+          {/* Source pills */}
+          <div className="hero-sources hero-anim hero-anim--5">
+            <span className="hero-sources-label">Synthesized from</span>
+            <div className="hero-source-pill"><BookOpen size={12} strokeWidth={2} />Anthropic Research</div>
+            <div className="hero-source-pill"><Code2 size={12} strokeWidth={2} />Boris Cherny</div>
+            <div className="hero-source-pill"><Layers size={12} strokeWidth={2} />Addy Osmani</div>
+            <div className="hero-source-pill"><Users size={12} strokeWidth={2} />Community Intel</div>
+          </div>
+
+          {/* CTA */}
+          <a className="hero-cta hero-anim hero-anim--6" href="#agentic-coding">
+            <span>Explore the guide</span>
+            <span className="hero-cta-arrow"><ArrowDown size={15} strokeWidth={2.5} /></span>
+          </a>
         </div>
 
-        {/* Eyebrow */}
-        <div className="hero-eyebrow hero-anim hero-anim--2">{META.eyebrow}</div>
-
-        {/* Headline */}
-        <h1 className="hero-anim hero-anim--3">
-          100X Agentic<br /><em>Engineering</em>
-        </h1>
-
-        {/* Sub */}
-        <p className="hero-sub hero-anim hero-anim--4">{META.heroSub}</p>
-
-        {/* Source pills */}
-        <div className="hero-sources hero-anim hero-anim--5">
-          <span className="hero-sources-label">Synthesized from</span>
-          <div className="hero-source-pill"><BookOpen size={12} strokeWidth={2} />Anthropic Research</div>
-          <div className="hero-source-pill"><Code2 size={12} strokeWidth={2} />Boris Cherny</div>
-          <div className="hero-source-pill"><Layers size={12} strokeWidth={2} />Addy Osmani</div>
-          <div className="hero-source-pill"><Users size={12} strokeWidth={2} />Community Intel</div>
+        {/* RIGHT column — 2x2 stat grid */}
+        <div className="hero-right">
+          <div className="stats-grid">
+            {HERO_STATS.map((s, i) => (
+              <StatCard key={i} s={s} i={i} />
+            ))}
+          </div>
         </div>
-
-        {/* Stats */}
-        <div className="stats-row hero-anim hero-anim--6">
-          {HERO_STATS.map((s, i) => {
-            const Icon = STAT_ICON_MAP[s.icon]
-            return (
-              <div key={i} className="stat-item" style={{ '--i': i }}>
-                {Icon && <div className="stat-icon"><Icon size={20} strokeWidth={1.5} /></div>}
-                <span className="stat-n">{s.n}</span>
-                <span className="stat-l">{s.label}</span>
-              </div>
-            )
-          })}
-        </div>
-
-        {/* CTA */}
-        <a className="hero-cta hero-anim hero-anim--7" href="#agentic-coding">
-          <span>Explore the guide</span>
-          <span className="hero-cta-arrow"><ArrowDown size={15} strokeWidth={2.5} /></span>
-        </a>
       </div>
     </section>
   )

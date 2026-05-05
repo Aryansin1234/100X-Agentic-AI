@@ -7,7 +7,7 @@
 
 export const META = {
   title: `100X Agentic Engineering`,
-  logoLabel: `Agentic Engineering Bible`,
+  logoLabel: `100X Agentic Engineering`,
   eyebrow: `Complete Guide · Basics to Mastery`,
   heroSub:
     `A structured, teaching-style guide to agentic coding — from foundational concepts to advanced multi-agent orchestration. Synthesized from Anthropic's 2026 research, Boris Cherny's workflow, Addy Osmani's framework, and top community intelligence.`,
