@@ -1,10 +1,14 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { META, HERO_STATS, NAV_ITEMS, SECTIONS } from './data.js'
-import { TrendingUp, ShieldCheck, Activity, BrainCircuit, BookOpen, Code2, Layers, Users, ArrowDown, Sun, Moon } from 'lucide-react'
+import { TrendingUp, ShieldCheck, Activity, BrainCircuit, BookOpen, Code2, Layers, Users, ArrowDown, Sun, Moon, BookMarked, Settings, Lightbulb, KeyRound, Workflow } from 'lucide-react'
 
-// ─────────────────────────────────────────────
-//  SMALL ATOMS
-// ─────────────────────────────────────────────
+const BLOCK_ICON_MAP = {
+  '📘': BookMarked,
+  '⚙️': Settings,
+  '💡': Lightbulb,
+  '🔑': KeyRound,
+  '🔀': Workflow,
+}
 
 function ReadingBar({ progress }) {
   return <div className="reading-bar" style={{ width: `${progress}%` }} />
@@ -184,14 +188,17 @@ function ToolsSection({ section }) {
 
 function MindsetSection({ section }) {
   return (
-    <div className="mindset-grid">
-      {section.cards.map((c, i) => (
-        <div key={i} className="mindset-card">
-          <div className="mindset-q">{c.q}</div>
-          <div className="mindset-a">{c.a}</div>
-        </div>
-      ))}
-    </div>
+    <>
+      {section.intro && <div className="teaching-intro">{section.intro}</div>}
+      <div className="mindset-grid">
+        {section.cards.map((c, i) => (
+          <div key={i} className="mindset-card">
+            <div className="mindset-q">{c.q}</div>
+            <div className="mindset-a">{c.a}</div>
+          </div>
+        ))}
+      </div>
+    </>
   )
 }
 
@@ -401,7 +408,9 @@ function TeachingSection({ section }) {
           {section.blocks.map((block, i) => (
             <div key={i} className={`teaching-block tb-${block.type}`}>
               <div className="tb-header">
-                <span className="tb-icon">{block.icon}</span>
+                <span className="tb-icon">
+                  {(() => { const I = BLOCK_ICON_MAP[block.icon]; return I ? <I size={15} strokeWidth={2} /> : block.icon })()}
+                </span>
                 <span className="tb-label">{block.label}</span>
               </div>
               <div className="tb-body">

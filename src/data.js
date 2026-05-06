@@ -219,6 +219,11 @@ cd my-project && claude
         ],
       },
     ],
+    callout: {
+      label: `Pro Tip`,
+      text: `Copilot and Claude Code don't compete — they compound. Use Copilot for inline flow and quick function generation inside the IDE, and Claude Code for autonomous multi-step terminal work. Together they cover every workflow without context switching.`,
+      variant: `info`,
+    },
   },
 
   // ══════════════════════════════════════════
@@ -241,6 +246,8 @@ cd my-project && claude
           `Google Jules — cloud agent for background tasks, Google ecosystem integration`,
           `Windsurf — IDE agent with Cascade flow for multi-step inline edits`,
           `Amazon Q Developer — IDE + CLI agent with strong AWS integration`,
+          `Devin — fully autonomous AI engineer: opens issues, writes code, runs CI, ships PRs`,
+          `Bolt.new / v0 — browser-based AI builders for rapid frontend + full-stack scaffolding`,
         ],
       },
       {
@@ -304,6 +311,10 @@ cd my-project && claude
           `Agents execute in parallel — each in its own git worktree`,
           `Orchestrator synthesizes results and runs integration checks`,
         ],
+        code: {
+          label: `.claude/agents/orchestrator.md — example multi-agent setup`,
+          content: `---\nname: feature-orchestrator\ndescription: >\n  Decomposes feature requests into parallel specialist tasks.\n  Routes to api-agent, db-agent, and test-agent automatically.\nmodel: claude-opus-4-5\ntools: [Read, Write, Bash, WebSearch]\n---\n\nYou are a senior engineering orchestrator.\n\nFor every feature request:\n1. Read CLAUDE.md to load project conventions\n2. Break the task into isolated subtasks (max 3 files each)\n3. Spawn specialist agents in parallel via git worktrees:\n   - api-agent  → handles routes, validation, handlers\n   - db-agent   → handles models, migrations, seeds\n   - test-agent → writes unit + integration tests\n4. Each agent works in its own branch — no cross-contamination\n5. Once all agents finish, run integration tests\n6. Merge only if tests pass — report results to the user`,
+        },
       },
       {
         type: `why`, icon: `💡`, label: `Why It Matters`,
@@ -803,6 +814,8 @@ Produce a Markdown table:
           `Rules compound \u2014 they apply to every future session automatically`,
           `After 6 months, your config is a serious competitive moat`,
           `If Claude repeats a mistake, the loop is broken \u2014 fix it immediately`,
+          `A session where you don't encode a lesson is a session that didn't compound`,
+          `The loop is asymmetric — encoding takes 30 seconds, the benefit is permanent`,
         ],
       },
       {
@@ -814,7 +827,12 @@ Produce a Markdown table:
           `Step 3: Import the rule into CLAUDE.md`,
           `Step 4: Verify the rule works in the next session`,
           `If Claude keeps violating a rule \u2192 file is too long or phrasing is ambiguous`,
+          `Prune CLAUDE.md weekly — remove rules that no longer apply to keep it <100 lines`,
         ],
+        code: {
+          label: `tasks/lessons.md — real example after a week of looping`,
+          content: `# Lessons Learned\n\n## 2026-04-27\n- NEVER use \`any\` in TypeScript — caught 3 runtime errors from this\n- ALWAYS run \`npm run typecheck\` after moving files\n\n## 2026-04-28\n- YOU MUST import from \`@/lib/db\` — not \`../../lib/db\` (path alias exists)\n- IMPORTANT: JWT is RS256 not HS256 — this broke prod auth last time\n\n## 2026-04-29\n- ALWAYS create a branch before starting any task\n- NEVER delete files — archive to _deprecated/ folder instead\n- Run /project:review before any PR — caught 2 issues today\n\n## Rule added to CLAUDE.md:\n# After any session where I encoded a lesson, output quality improved measurably.\n# Track: what did Claude get wrong? → encode it → it won't happen again.`,
+        },
       },
       {
         type: `why`, icon: `💡`, label: `Why It Matters`,
@@ -911,14 +929,20 @@ Produce a Markdown table:
       },
       {
         type: `how`, icon: `⚙️`, label: `How They Work`,
-        text: `Configure MCP servers in .claude/settings.json. Each server provides tools (read DB, call API, manage files). Set lazy_load with triggers to dramatically reduce startup cost. For A2A, agents advertise capabilities and discover each other automatically.`,
+        text: `Configure MCP servers in .claude/settings.json. Each server provides tools (read DB, call API, manage files). Set lazy_load with triggers to dramatically reduce startup cost. For A2A, agents advertise capabilities as "Agent Cards" and discover each other automatically — then communicate via typed JSON task objects.`,
         bullets: [
           `Configure in .claude/settings.json under "mcpServers"`,
           `Set read_only: true for all production data sources`,
           `Use lazy_load with triggers to reduce startup overhead significantly`,
           `Block sensitive patterns (*.env, *.key, */secrets/*) at config level`,
           `Circuit breaker: error rate > 1% = automatic halt`,
+          `A2A: agents expose an Agent Card (JSON) describing capabilities + endpoint`,
+          `A2A task flow: send Task → receive streaming updates → get Artifact (result)`,
         ],
+        code: {
+          label: `A2A — how two agents collaborate across vendors`,
+          content: `// Agent A (Claude) sends a task to Agent B (any A2A-compatible agent)\n// Agent B could be GPT-4o, Gemini, or a custom agent\n\n// 1. Agent B publishes its Agent Card (capability advertisement)\nGET https://agent-b.example.com/.well-known/agent.json\n// Response:\n{\n  "name": "TestWriterAgent",\n  "description": "Writes unit and integration tests for any function",\n  "skills": [{ "id": "write_tests", "name": "Write Tests" }],\n  "url": "https://agent-b.example.com/a2a"\n}\n\n// 2. Agent A sends a Task to Agent B\nPOST https://agent-b.example.com/a2a\n{\n  "id": "task-001",\n  "message": {\n    "role": "user",\n    "parts": [{ "text": "Write tests for src/auth/jwt.ts" }]\n  }\n}\n\n// 3. Agent B streams progress back, then returns the Artifact\n{ "status": "working",  "update": "Analyzing function signatures..." }\n{ "status": "working",  "update": "Writing edge case tests..." }\n{ "status": "complete", "artifact": { "file": "src/auth/jwt.test.ts" } }\n\n// Result: Claude (Agent A) receives a finished test file\n// from a different vendor's agent — zero custom integration code`,
+        },
       },
       {
         type: `why`, icon: `💡`, label: `Why They Matter`,
@@ -1007,6 +1031,19 @@ Produce a Markdown table:
           `Squash merge = one commit per feature = easy revert`,
           `Agent intermediate commits are noise \u2014 squash them away`,
           `git bisect works perfectly with clean squash-merged history`,
+        ],
+      },
+    ],
+    pillars: [
+      {
+        id: `GD-01`, title: `The full worktree workflow`, tag: `Playbook`, open: true,
+        code: {
+          label: `Daily git discipline — full workflow for parallel agentic sessions`,
+          content: `# ━━━ START A NEW TASK (run once per task) ━━━\ngit worktree add ../feat-auth-rate-limit\ncd ../feat-auth-rate-limit && claude\n# → Claude works in complete isolation here\n\n# ━━━ REVIEW WHEN CLAUDE FINISHES ━━━\ngit diff main                          # see all changes\ngit diff main --stat                   # file list summary\n\n# Optionally: spawn a second Claude to review\n# "Review this as a staff engineer — what's wrong?"\n\n# ━━━ MERGE CLEANLY ━━━\ncd ../my-project\ngit merge --squash feat-auth-rate-limit  # one commit\ngit commit -m "feat(auth): add rate limiting to API routes"\ngit push origin main\n\n# ━━━ CLEANUP ━━━\ngit worktree remove ../feat-auth-rate-limit\ngit branch -d feat-auth-rate-limit\n\n# ━━━ RUN 10 SESSIONS IN PARALLEL ━━━\n# Each task gets its own worktree. They never interfere.\nfor task in auth-rate-limit db-indexes api-validation; do\n  git worktree add ../feat-$task\n  (cd ../feat-$task && claude --task "Implement $task per spec") &\ndone\n# Review all diffs when agents finish, squash merge each one`,
+        },
+        rules: [
+          { color: `teal`, title: `One worktree per agent session — no exceptions`, desc: `Free to create, catastrophic to skip. Agents on the same directory will collide. Branches never intersect = safe parallelism.` },
+          { color: `gold`, title: `Squash merge for clean history`, desc: `Agent sessions generate many intermediate commits. Squash them into one commit per feature. git revert and git bisect become trivially easy.` },
         ],
       },
     ],
@@ -1436,6 +1473,7 @@ jobs:
     title: `Mindset Shifts That Unlock 100X`,
     subtitle: `Mental models \u2014 the questions that change everything`,
     type: `mindset`,
+    intro: `The technical skills of agentic engineering are learnable in weeks. The mindset shifts take longer — but they're what separate engineers who use AI as a slightly faster autocomplete from those who genuinely multiply their output by 10x or more.`,
     cards: [
       { q: `"Am I writing code or designing systems?"`, a: `The most valuable engineers in 2026 aren't those who type fastest. They're those who design coordination systems. Your leverage is in what you architect, not what you type.` },
       { q: `"Is this task verifiable quickly?"`, a: `If yes \u2192 delegate fully and aggressively. If not \u2192 work collaboratively. The delegation intuition is a skill built over time. Start by delegating anything with clear acceptance criteria.` },
